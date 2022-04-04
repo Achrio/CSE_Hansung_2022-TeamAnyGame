@@ -8,6 +8,7 @@ TagManager:
   - ShoulderView
   - TopView
   - QuarterView
+  - Throwable
   layers:
   - Default
   - TransparentFX

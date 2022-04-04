@@ -6,7 +6,7 @@ public class CameraPoint : MonoBehaviour {
     private GameObject mainCamera;
     private CameraControl _cameraControl;
 
-    [Header ("Additional Camera Move and Rotate Value")]
+    [Header ("Camera Move and Rotate Value")]
     public Vector3 extraPos;
     public Vector3 extraRot;
 
@@ -24,9 +24,11 @@ public class CameraPoint : MonoBehaviour {
     }
 
     //트리거 범위 벗어나면 초기화
+    /*
     void OnTriggerExit(Collider mainCam) {
         if(mainCam.gameObject.tag == "MainCamera") {
             _cameraControl.initExtra();
         }
     }
+    */
 }
