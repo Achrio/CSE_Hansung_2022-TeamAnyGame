@@ -8,10 +8,14 @@ TagManager:
   - ShoulderView
   - TopView
   - QuarterView
+<<<<<<< HEAD
   - Laser
   - Platfrom
   - New tag
   - FieldItem
+=======
+  - Throwable
+>>>>>>> 4fc5b2306ec6287d38fe167309edb5de9d97d1e7
   layers:
   - Default
   - TransparentFX
