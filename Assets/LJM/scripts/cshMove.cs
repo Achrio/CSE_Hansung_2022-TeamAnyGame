@@ -51,4 +51,16 @@ public class cshMove : MonoBehaviour
 
         isJumping = false;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Platform")
+            GetComponent<CapsuleCollider>().isTrigger = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Platform")
+            GetComponent<CapsuleCollider>().isTrigger = false;
+    }
 }

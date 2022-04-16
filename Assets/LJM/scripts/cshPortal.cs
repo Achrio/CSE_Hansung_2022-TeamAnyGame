@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class cshPortal : MonoBehaviour
 {
     public GameObject UI;
-
+    public Scene moveScene;
     bool isShowing;
 
     // Start is called before the first frame update
@@ -34,7 +34,7 @@ public class cshPortal : MonoBehaviour
 
     public void yes() 
     {
-        SceneManager.LoadScene("LobbyScene");
+        SceneManager.LoadScene("demoScene_free");
     }
 
     public void no()

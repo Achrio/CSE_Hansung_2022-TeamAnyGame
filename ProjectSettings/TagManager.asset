@@ -8,6 +8,10 @@ TagManager:
   - ShoulderView
   - TopView
   - QuarterView
+  - Laser
+  - Platfrom
+  - New tag
+  - FieldItem
   layers:
   - Default
   - TransparentFX
@@ -15,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
