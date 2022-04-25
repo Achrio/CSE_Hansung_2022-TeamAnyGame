@@ -23,6 +23,10 @@ public class ChMove : MonoBehaviour
     public float climbingSpeed = 3f;
     bool isLadder;
 
+    public float dashSpeed = 50f;
+    bool isDash;
+    public int dashCount;
+  
     Rigidbody rigid;
 
     Vector3 movement;
@@ -30,7 +34,6 @@ public class ChMove : MonoBehaviour
     float verticalMove;
     bool isJumping;
     bool jumpZone;
-
 
     private void Awake()
     {
@@ -47,6 +50,7 @@ public class ChMove : MonoBehaviour
         JumpZone();
         Wall();
         Ladder();
+        Dash();
     }
 
     void RayCast()
@@ -58,6 +62,7 @@ public class ChMove : MonoBehaviour
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
         isJumping = Input.GetButtonDown("Jump");
+        isDash = Input.GetButtonDown("Dash");
     }
     void Run()
     {
@@ -76,6 +81,16 @@ public class ChMove : MonoBehaviour
         {
             ChangeDir();
         }
+    }
+
+    void Dash()
+    {
+        if(isDash && GameObject.Find("Main Camera").GetComponent<cshTimer>().count > 0)
+        {
+            rigid.AddForce(Vector3.right * dashSpeed * isRight * speed, ForceMode.Impulse);
+            GameObject.Find("Main Camera").GetComponent<cshTimer>().count --;
+        }
+        
     }
 
     void Jump()
