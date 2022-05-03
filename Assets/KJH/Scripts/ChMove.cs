@@ -32,7 +32,7 @@ public class ChMove : MonoBehaviour
     Vector3 movement;
     public float horizontalMove;
     float verticalMove;
-    bool isJumping;
+    [SerializeField] bool isJumping;
     bool jumpZone;
 
     private void Awake()

@@ -4,14 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/LJM/Scenes/SampleScene.unity
-    guid: 780d0790ec46ae54785be85868f6c332
-  - enabled: 1
-    path: Assets/LJM/Scenes/LobbyScene.unity
-    guid: a9beac251fc34ba4d869dbbeaa1059aa
-  - enabled: 1
-    path: Assets/LJM/Store/Fantasy Forest Environment Free Sample/Scenes/demoScene_free.unity
-    guid: 7769f33fb4fa2e5458344a36556ad760
-  m_configObjects: {}
+  m_Scenes: []

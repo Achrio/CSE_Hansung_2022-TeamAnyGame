@@ -147,7 +147,6 @@ public class CameraControl : MonoBehaviour {
     private BoxCollider _cameraCollider;
     private Camera _camera;
     [SerializeField] private float _timer;
-    [SerializeField] private bool _onLerp = false;
 
     public GameObject player;
     public float camPosSpeed = 2f;
@@ -180,12 +179,10 @@ public class CameraControl : MonoBehaviour {
 
         _cameraTransform.rotation = Quaternion.Lerp(_cameraTransform.rotation, Quaternion.Euler(_rot.getCameraRot()), camRotSpeed * Time.deltaTime);
     }
-
-
+    
     //Trigger 충돌시 처리 함수들
 
     private void _swtichView(int view) {
-        _onLerp = true;
         _pos.setView(view);
         _rot.setView(view);
     }
@@ -210,16 +207,13 @@ public class CameraControl : MonoBehaviour {
     }
 
     public void setExtraPos(Vector3 extra) {
-        _onLerp = true;
         _pos.setExtra(extra);
     }
     public void setExtraRot(Vector3 extra) {
-        _onLerp = true;
         _rot.setExtra(extra);
     }
 
     public void initExtra() {
-        _onLerp = true;
         _pos.initExtra();
         _rot.initExtra();
     }
