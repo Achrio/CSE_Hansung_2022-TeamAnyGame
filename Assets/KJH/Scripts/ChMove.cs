@@ -23,7 +23,8 @@ public class ChMove : MonoBehaviour
     public float climbingSpeed = 3f;
     bool isLadder;
 
-    public float dashSpeed = 50f;
+    public float dashSpeed = 20.0f;
+    public float dashTime = 0.0f;
     bool isDash;
     public int dashCount;
   
@@ -35,8 +36,11 @@ public class ChMove : MonoBehaviour
     [SerializeField] bool isJumping;
     bool jumpZone;
 
+ 
+
     private void Awake()
     {
+
         rigid = GetComponent<Rigidbody>();
         isJump = jumpCount;
     }
@@ -82,15 +86,25 @@ public class ChMove : MonoBehaviour
             ChangeDir();
         }
     }
-
     void Dash()
     {
-        if(isDash && GameObject.Find("Main Camera").GetComponent<cshTimer>().count > 0)
+        if (isDash && GameObject.Find("Main Camera").GetComponent<cshTimer>().count > 0)
         {
-            rigid.AddForce(Vector3.right * dashSpeed * isRight * speed, ForceMode.Impulse);
-            GameObject.Find("Main Camera").GetComponent<cshTimer>().count --;
+            StartCoroutine(InDash());
+            GameObject.Find("Main Camera").GetComponent<cshTimer>().count--;
         }
+    }
+    IEnumerator InDash()
+    {
+        float startTime = Time.time;
+
         
+            while (Time.time < startTime + dashTime)
+            {
+                rigid.AddForce(Vector3.right * dashSpeed * isRight, ForceMode.Impulse);
+                yield return null; 
+            }
+      
     }
 
     void Jump()
@@ -119,7 +133,7 @@ public class ChMove : MonoBehaviour
             {
                 isWallJump = true;
                 Invoke("FreezeX", 0.3f);
-                rigid.velocity = new Vector3(-isRight*wallJumpPower, 1.0f * wallJumpPower, rigid.velocity.z);
+                rigid.velocity = new Vector3(-isRight*wallJumpPower, 1.1f * wallJumpPower, rigid.velocity.z);
                 ChangeDir();
             }
         }
