@@ -8,7 +8,7 @@ public class ChMove : MonoBehaviour
     public float jumpPower = 5f;
     public int jumpCount;
     public float jumpzonePower = 2f;
-    int isJump;
+    public int isJump;
     public bool dirRight = true;
     int isRight = 1;
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3149659, g: 0.08057814, b: 0.067627795, a: 1}
+  m_IndirectSpecularColor: {r: 0.31502572, g: 0.08055828, b: 0.0677642, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4516,7 +4516,7 @@ GameObject:
   - component: {fileID: 1896880889}
   m_Layer: 0
   m_Name: Tiles
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5404,6 +5404,7 @@ MonoBehaviour:
   isWallJump: 0
   climbingSpeed: 3
   dashSpeed: 10
+  dashTime: 0
   dashCount: 0
   horizontalMove: 0
   isJumping: 0
