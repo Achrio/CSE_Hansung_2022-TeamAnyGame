@@ -1,7 +1,5 @@
 {
-    "name": [],
-    "script": [],
     "money": 0,
-    "health": 5,
-    "inv": []
+    "HP": 5,
+    "dash": 5
 }

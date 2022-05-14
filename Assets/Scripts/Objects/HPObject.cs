@@ -8,8 +8,8 @@ public class HPObject : MonoBehaviour {
 
     void OnTriggerEnter(Collider player) {
         if(player.gameObject.tag == "Player") {
-            GameManager.instance.hpUpdate(hp);
-            Debug.Log(GameManager.instance.curHP.ToString());
+            GameManager.instance.curHPUpdate(hp);
+            Debug.Log(GameManager.instance.curHPValue.ToString());
             Instantiate(effect, this.gameObject.transform.position, this.gameObject.transform.rotation);
             Destroy(this.gameObject);
         }

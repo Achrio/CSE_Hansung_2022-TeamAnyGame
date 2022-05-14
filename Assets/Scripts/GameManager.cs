@@ -5,7 +5,75 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class StatusManager {
+
+public class GameManager : MonoBehaviour {
+    private StatusManage _status = new StatusManage();
+    [HideInInspector] public static GameManager instance;
+
+    [Header ("Screens")]
+    public GameObject pauseScreen;              //pause UI Screen (add in Inspector)
+    public GameObject deathScreen;              //death UI Screen (add in Inspector)
+    
+    [Header ("Fixed Values")]
+    public int HPValue;       //max HP (saveFile value), fixed
+    public int dashValue;     //max Dash count (saveFile value), fixed
+
+    [Header ("Variable Values")]
+    public int curHPValue;    //current HP (game value), variable
+    public int curDashValue;  //current Dash count (game value), variable
+    public int moneyValue;    //current Money (game value), fixed first then variable
+
+    void Awake() {
+        instance = this;
+    }
+
+    void Start() {
+        cshTimer timer = this.gameObject.GetComponent<cshTimer>();
+        timer.dashCount = this.dashValue; //init cshTimer dashCount
+        timer.count = this.curDashValue; //init cshTimer dashCount
+    }
+
+    //Game Status Change
+    void Update() {
+        //pause action
+        if(!_status.isPause && Input.GetKeyDown(KeyCode.Escape)) {
+            _status.onPause();
+            pauseScreen.SetActive(true);
+            return;
+        }
+        //resume action
+        if(_status.isPause && Input.GetKeyDown(KeyCode.Escape)) {
+            _status.onResume();
+            pauseScreen.SetActive(false);
+            return;
+        }
+
+        //game over action
+        if(curHPValue <= 0) {
+            _status.gameOver();
+        }
+    }
+
+    //UI Update (Called by each object's func)
+    public void MoneyUpdate(int changeValue) {
+        moneyValue += changeValue;
+
+        moneyUI.Money.moneyUpdate(moneyValue);
+    }
+    public void curHPUpdate(int changeValue) {
+        if(curHPValue + changeValue > HPValue) curHPValue = HPValue;
+        else curHPValue += changeValue;
+
+        HPUI.HP.hpUpdate(curHPValue);
+    }
+    public void curDashUpdate(int changeValue) {
+        curDashValue = changeValue;
+
+        dashUI.Dash.curDashUpdate(curDashValue);
+    }
+}
+
+public class StatusManage {
     public bool isPause = false;
     public bool isOver = false;
 
@@ -25,101 +93,7 @@ public class StatusManager {
     }
 
     public void gameOver() {
-        onPause();
+        //onPause();
         isOver = true;
-    }
-}
-
-public class GameManager : MonoBehaviour {
-    private StatusManager _status = new StatusManager();
-    [HideInInspector] public static GameManager instance;
-
-    [Header ("Text UI")]
-    public TextMeshProUGUI hpUI;
-    public TextMeshProUGUI moneyUI;
-    public TextMeshProUGUI timerUI;
-    public TextMeshProUGUI questUI;
-    
-    [HideInInspector] public int health;
-    [HideInInspector] public int money;
-    [HideInInspector] public int curHP;
-    private float _time;
-
-    [HideInInspector] public List<int> inv = new List<int>();
-
-    void Awake() {
-        instance = this;
-    }
-
-    void Update() {
-        //pause
-        if(!_status.isPause && Input.GetKeyDown(KeyCode.Escape)) {
-            _status.onPause();
-            return;
-        }
-
-        //resume
-        if(!_status.isPause && Input.GetKeyDown(KeyCode.Escape)) {
-            _status.onResume();
-            return;
-        }
-
-        //time ticking
-        if(!_status.isPause && !_status.isOver) {
-            _time += Time.deltaTime;
-            TimeSpan timespan = TimeSpan.FromSeconds(_time);
-            timerUI.text = timespan.ToString("mm': 'ss'. 'fff");
-        }
-
-        //game over
-        if(curHP <= 0) {
-            _status.gameOver();
-        }
-    }
-
-    public void hpUpdate(int change) {
-        int fromHP = curHP;
-        int toHP = curHP + change;
-        if(toHP < 0) toHP = 0;
-
-        curHP = toHP;
-
-        StartCoroutine(ChangingNum(0, hpUI, fromHP, toHP));
-    }
-
-    public void moneyUpdate(int change) {
-        int fromMoney = money;
-        int toMoney = money + change;
-        if(toMoney < 0) toMoney = 0;
-        
-        money += change;
-
-        StartCoroutine(ChangingNum(1, moneyUI, fromMoney, toMoney));
-    }
-
-    public void invGetUpdate(int itemCode) {
-        inv.Add(itemCode);
-    }
-
-    IEnumerator ChangingNum(int type, TextMeshProUGUI text, float current, float toChange) {
-        float speed = 0.5f;
-        float change = (toChange - current) / speed;
-
-        while(current < toChange) {
-            current += change * Time.deltaTime;
-            if(type == 1) {
-                text.text = "$ " + ((int)current).ToString();
-            }
-            else text.text = ((int)current).ToString();
-
-            yield return null;
-        }
-
-        current = toChange;
-
-        if(type == 1) {
-                text.text = "$ " + ((int)current).ToString();
-        }
-        else text.text = ((int)current).ToString();
     }
 }

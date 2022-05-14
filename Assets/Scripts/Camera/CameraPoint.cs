@@ -23,6 +23,7 @@ public class CameraPoint : MonoBehaviour {
         }
     }
 
+
     //트리거 범위 벗어나면 초기화
     /*
     void OnTriggerExit(Collider mainCam) {

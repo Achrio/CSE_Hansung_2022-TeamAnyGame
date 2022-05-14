@@ -8,7 +8,8 @@ public class MoneyObject : MonoBehaviour {
 
     void OnTriggerEnter(Collider player) {
         if(player.gameObject.tag == "Player") {
-            GameManager.instance.moneyUpdate(money);
+            CameraShake.instance.OnShakeCamera();
+            GameManager.instance.MoneyUpdate(money);
             Instantiate(effect, this.gameObject.transform.position, this.gameObject.transform.rotation);
             Destroy(this.gameObject);
         }
