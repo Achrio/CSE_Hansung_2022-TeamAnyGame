@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class cshMonster : MonoBehaviour
 {
-    public enum Type { A, B, C };
+    public enum Type { Slime, Turtle, Mage, Plant, Orc, Skeleton, Spider };
     public Type enemyType;
     public int maxHP;
     public int curHP;
@@ -13,6 +13,7 @@ public class cshMonster : MonoBehaviour
     public bool isChase;
     public bool isAttack;
     public BoxCollider meleeArea;
+    public GameObject bullet;
 
     Rigidbody rigidbody;
     CapsuleCollider capsuleCollider;
@@ -48,6 +49,7 @@ public class cshMonster : MonoBehaviour
 
     void FreezeVelocity()
     {
+        rigidbody.velocity = Vector3.zero;
         rigidbody.angularVelocity = Vector3.zero;
     }
 
@@ -58,17 +60,33 @@ public class cshMonster : MonoBehaviour
 
         switch (enemyType) 
         {
-            case Type.A:
+            case Type.Slime:
                 targetRadius = 1f;
                 targetRange = 1f;
                 break;
-            case Type.B:
+            case Type.Turtle:
                 targetRadius = 0.75f;
                 targetRange = 3f;
                 break;
-            case Type.C:
+            case Type.Mage:
+                targetRadius = 0.5f;
+                targetRange = 5f;
+                break;
+            case Type.Plant:
                 targetRadius = 1f;
                 targetRange = 1f;
+                break;
+            case Type.Orc:
+                targetRadius = 1f;
+                targetRange = 1f;
+                break;
+            case Type.Skeleton:
+                targetRadius = 1f;
+                targetRange = 1f;
+                break;
+            case Type.Spider:
+                targetRadius = 0.75f;
+                targetRange = 3f;
                 break;
         }
 
@@ -89,35 +107,77 @@ public class cshMonster : MonoBehaviour
 
         switch (enemyType)
         {
-            case Type.A:
+            case Type.Slime:
+                
                 yield return new WaitForSeconds(0.2f);
                 meleeArea.enabled = true;
-
-                yield return new WaitForSeconds(1f);
+                
+                yield return new WaitForSeconds(0.6f);
                 meleeArea.enabled = false;
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.03f);
                 break;
-            case Type.B:
+            case Type.Turtle:
                 yield return new WaitForSeconds(0.1f);
-                rigidbody.AddForce(transform.forward * 10, ForceMode.Impulse);
+                rigidbody.AddForce(transform.forward * 5, ForceMode.Impulse);
                 meleeArea.enabled = true;
 
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.73f);
                 rigidbody.velocity = Vector3.zero;
                 meleeArea.enabled = false;
 
                 animator.SetBool("isAttack", false);
                 yield return new WaitForSeconds(3f);
                 break;
-            case Type.C:
-                yield return new WaitForSeconds(0.2f);
+            case Type.Mage:
+                yield return new WaitForSeconds(1.45f);
+                GameObject instantBullet = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y+1f, transform.position.z), 
+                    Quaternion.Euler(transform.rotation.x *90, transform.rotation.y, transform.rotation.z*180));
+                Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+                rigidBullet.velocity = transform.forward * 10;
+
+                yield return new WaitForSeconds(0.53f);
+                break;
+            case Type.Plant:
+                yield return new WaitForSeconds(0.6f);
                 meleeArea.enabled = true;
 
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(1f);
                 meleeArea.enabled = false;
 
+                animator.SetBool("isAttack", false);
+                yield return new WaitForSeconds(1f);
+                break;
+            case Type.Orc:
                 yield return new WaitForSeconds(0.5f);
+                meleeArea.enabled = true;
+
+                yield return new WaitForSeconds(1.5f);
+                meleeArea.enabled = false;
+
+                animator.SetBool("isAttack", false);
+                yield return new WaitForSeconds(2f);
+                break;
+            case Type.Skeleton:
+                yield return new WaitForSeconds(0.1f);
+                meleeArea.enabled = true;
+
+                yield return new WaitForSeconds(0.47f);
+                meleeArea.enabled = false;
+
+                yield return new WaitForSeconds(0.1f);
+                break;
+            case Type.Spider:
+                yield return new WaitForSeconds(0.1f);
+                rigidbody.AddForce(transform.forward * 5, ForceMode.Impulse);
+                meleeArea.enabled = true;
+
+                yield return new WaitForSeconds(0.9f);
+                rigidbody.velocity = Vector3.zero;
+                meleeArea.enabled = false;
+
+                animator.SetBool("isAttack", false);
+                yield return new WaitForSeconds(3f);
                 break;
         }
 

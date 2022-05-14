@@ -910,9 +910,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 1.0000002
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.32213604, z: 0}
 --- !u!195 &3588481734805724477
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -954,6 +954,7 @@ MonoBehaviour:
   isChase: 0
   isAttack: 0
   meleeArea: {fileID: 3588481735991106555}
+  bullet: {fileID: 0}
 --- !u!1 &3587851029583328923
 GameObject:
   m_ObjectHideFlags: 0
