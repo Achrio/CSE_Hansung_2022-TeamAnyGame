@@ -23,9 +23,6 @@ public class GameManager : MonoBehaviour {
     public int curDashValue;  //current Dash count (game value), variable
     public int moneyValue;    //current Money (game value), fixed first then variable
 
-    [Header ("Stage Names")]
-    public List<string> stageName; //stageName (add in Inspector)
-
     void Awake() {
         instance = this;
     }
@@ -88,6 +85,11 @@ public class StatusManage {
     public void onResume() {
         isPause = false;
         Time.timeScale = 1;
+    }
+
+    public void gameStart() {
+        onResume();
+        isOver = false;
     }
 
     public void gameOver() {
