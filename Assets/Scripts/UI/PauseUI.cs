@@ -37,10 +37,12 @@ public class PauseUI : MonoBehaviour {
     private void returnToLobby() {
         Time.timeScale = 1;
         SceneLoadingManager.LoadScene("LobbyScene");
+        this.gameObject.SetActive(false);
     }
 
     private void returnToMain() {
         Time.timeScale = 1;
         SceneLoadingManager.LoadScene("MainScene");
+        this.gameObject.SetActive(false);
     }
 }

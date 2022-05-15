@@ -16,7 +16,7 @@ public class SceneLoadingManager : MonoBehaviour {
         nextScene = sceneName;
         SceneManager.LoadScene("LoadingScene");
     }
-
+    
     IEnumerator LoadScene() {
         yield return null;
         AsyncOperation op = SceneManager.LoadSceneAsync(nextScene);

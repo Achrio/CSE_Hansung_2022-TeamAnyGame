@@ -27,9 +27,10 @@ public class control : MonoBehaviour
     void Update()
     {
         Jump();
-        //ÄÃ¸®´õ¿¡¼­ ¹Ù´Ú¿¡ ÀÖÀ»‹š¸¸ µÇ°Ô ÇØ¾ßµÉ°Å°°Àºµ¥.....
+        //ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù´Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç°ï¿½ ï¿½Ø¾ßµÉ°Å°ï¿½ï¿½ï¿½ï¿½ï¿½.....
         Move();
         attack();
+        Died();
     }
      private void attack()
     {
@@ -93,20 +94,25 @@ public class control : MonoBehaviour
     }
     public void dmgd()
     {
-        hp--;
+        GameManager.instance.HP--;
     }
     public void Died()
     {
-        if (hp <= 0)
+        if (GameManager.instance.HP <= 0)
         {
             unichan_ani.SetBool("died", true);
+            Invoke("FadeOut", 3f);
             Invoke("Wait2sec", 5f);
-            
         }
+    }
+    void FadeOut() {
+        FadeScreen.instance.fadeout();
     }
     void Wait2sec()
     {
-        SceneManager.LoadScene("metro");
+        FadeScreen.instance.fadein();
+        GameManager.instance.curHPUpdate(5);
+        SceneLoadingManager.LoadScene("LobbyScene");
     }
     private void OnCollisionEnter(Collision collision)
     {

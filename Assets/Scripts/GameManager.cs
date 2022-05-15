@@ -13,24 +13,32 @@ public class GameManager : MonoBehaviour {
     [Header ("Screens")]
     public GameObject pauseScreen;              //pause UI Screen (add in Inspector)
     public GameObject deathScreen;              //death UI Screen (add in Inspector)
-    
-    [Header ("Fixed Values")]
-    public int HPValue;       //max HP (saveFile value), fixed
-    public int dashValue;     //max Dash count (saveFile value), fixed
 
-    [Header ("Variable Values")]
-    public int curHPValue;    //current HP (game value), variable
-    public int curDashValue;  //current Dash count (game value), variable
-    public int moneyValue;    //current Money (game value), fixed first then variable
+    [Header ("Stage Names")]
+    public List<string> stageName; //stageName (add in Inspector)
+    
+    [Header ("Values")]
+    public int money;
+    public int HP;
+    public int dash;
+    public int isShield;
+    public List<float> clearTime;
 
     void Awake() {
         instance = this;
+        clearTime = new List<float>();
+        clearTime.Add(0f);
+        clearTime.Add(0f);
+        clearTime.Add(0f);
     }
 
     void Start() {
+
+        /* 대쉬 UI 임시
         cshTimer timer = this.gameObject.GetComponent<cshTimer>();
-        timer.dashCount = this.dashValue; //init cshTimer dashCount
-        timer.count = this.curDashValue; //init cshTimer dashCount
+        timer.dashCount = this.maxDash; //init cshTimer dashCount
+        timer.count = this.curDash; //init cshTimer dashCount
+        */
     }
 
     //Game Status Change
@@ -47,30 +55,20 @@ public class GameManager : MonoBehaviour {
             pauseScreen.SetActive(false);
             return;
         }
-
-        //game over action
-        if(curHPValue <= 0) {
-            _status.gameOver();
-        }
     }
 
     //UI Update (Called by each object's func)
     public void MoneyUpdate(int changeValue) {
-        moneyValue += changeValue;
+        money += changeValue;
 
-        moneyUI.Money.moneyUpdate(moneyValue);
+        moneyUI.Money.moneyUpdate(money);
     }
     public void curHPUpdate(int changeValue) {
-        if(curHPValue + changeValue > HPValue) curHPValue = HPValue;
-        else curHPValue += changeValue;
+        HP += changeValue;
 
-        HPUI.HP.hpUpdate(curHPValue);
+        HPUI.HP.hpUpdate(HP);
     }
-    public void curDashUpdate(int changeValue) {
-        curDashValue = changeValue;
-
-        dashUI.Dash.curDashUpdate(curDashValue);
-    }
+    
 }
 
 public class StatusManage {
@@ -85,15 +83,5 @@ public class StatusManage {
     public void onResume() {
         isPause = false;
         Time.timeScale = 1;
-    }
-
-    public void gameStart() {
-        onResume();
-        isOver = false;
-    }
-
-    public void gameOver() {
-        //onPause();
-        isOver = true;
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 
 //saveData form
 [System.Serializable]
@@ -9,8 +10,9 @@ public class SaveData {
     public int money;
     public int HP;
     public int dash;
+    public int isShield;
+    public List<float> clearTime;
 
-    //public List<int> store;
 }
 
 public class DataManager : MonoBehaviour {
@@ -26,9 +28,16 @@ public class DataManager : MonoBehaviour {
 
         //init, make saveData
         if(!File.Exists(_dataPath)) {
-            GameManager.instance.moneyValue = 0;
-            GameManager.instance.HPValue = 5;
-            GameManager.instance.dashValue = 3;
+            GameManager.instance.money= 0;
+            GameManager.instance.HP = 5;
+            GameManager.instance.dash = 3;
+            GameManager.instance.isShield = 0;
+
+            //Add amount of stages
+            GameManager.instance.clearTime[0] = 0f;
+            GameManager.instance.clearTime[1] = 0f;
+            GameManager.instance.clearTime[2] = 0f;
+
             DataSave();
         }
         //load saveData, init fixed value in GameManager
@@ -37,30 +46,38 @@ public class DataManager : MonoBehaviour {
             saveData = JsonUtility.FromJson<SaveData>(loadData);
 
             if(saveData != null) {
-                GameManager.instance.moneyValue = saveData.money;
-                GameManager.instance.HPValue = saveData.HP;
-                GameManager.instance.dashValue = saveData.dash;
+                GameManager.instance.money = saveData.money;
+                GameManager.instance.HP = saveData.HP;
+                GameManager.instance.dash = saveData.dash;
+                GameManager.instance.isShield = saveData.isShield;
+
+                //Add amount of stages
+                GameManager.instance.clearTime[0] = saveData.clearTime[0];
+                GameManager.instance.clearTime[1] = saveData.clearTime[1];
+                GameManager.instance.clearTime[2] = saveData.clearTime[2];
             }
         }
 
-        //init variable values in GameManager, update all UI
-        GameManager.instance.curHPValue = saveData.HP;
-        GameManager.instance.curHPUpdate(saveData.HP);
-        
-        GameManager.instance.MoneyUpdate(saveData.money);
-
-        GameManager.instance.curDashValue = saveData.dash;
-        dashUI.Dash.initDashCount(saveData.dash); //init dash count in dashUI
+        //update all UI
+        GameManager.instance.curHPUpdate(0);
+        GameManager.instance.MoneyUpdate(0);
+        //dashUI.Dash.initDashCount(GameManager.instance.dash); //init dash count in dashUI
     }
 
     public void DataSave() {
         SaveData saveData = new SaveData();
 
-        saveData.money = GameManager.instance.moneyValue;
-        saveData.HP = GameManager.instance.HPValue;
-        saveData.dash = GameManager.instance.dashValue;
+        saveData.money = GameManager.instance.money;
+        saveData.HP = GameManager.instance.HP;
+        saveData.dash = GameManager.instance.dash;
+        saveData.clearTime = GameManager.instance.clearTime;
 
         string json = JsonUtility.ToJson(saveData, true);
-        File.WriteAllText(_dataPath, json); 
+        File.WriteAllText(_dataPath, json);
+    }
+
+    public void DataDelete() {
+        System.IO.File.Delete(_dataPath);
+        DataLoad();
     }
 }

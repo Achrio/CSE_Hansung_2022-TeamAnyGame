@@ -8,6 +8,7 @@ using TMPro;
 public class timerUI : MonoBehaviour {
     public TextMeshProUGUI timerText; //add in Inspector
     public float time;
+    public bool isClear = false;
     
     [HideInInspector] public static timerUI instance;
 
@@ -17,9 +18,11 @@ public class timerUI : MonoBehaviour {
 
     //Time Update (Stops when Pause(delatTime))
     void Update() {
+        if(!isClear) {
         //time ticking
-        time += Time.deltaTime;
-        TimeSpan timespan = TimeSpan.FromSeconds(time);
-        timerText.text = timespan.ToString("mm': 'ss'. 'fff");
+            time += Time.deltaTime;
+            TimeSpan timespan = TimeSpan.FromSeconds(time);
+            timerText.text = timespan.ToString("mm': 'ss'. 'fff");
+        }
     }
 }

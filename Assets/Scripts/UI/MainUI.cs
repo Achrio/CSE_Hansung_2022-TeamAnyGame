@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class MainUI : MonoBehaviour {
     public void StartGame() {
-        SceneLoadingManager.LoadScene("LobbyScene");
+        SceneLoadingManager.LoadScene("Running1");
     }
 }

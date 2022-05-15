@@ -89,14 +89,13 @@ public class ChMove : MonoBehaviour
     {
         //(김승현 수정) UI 업데이트 용이하게 하기 위해 static으로 cshTimer의 count 접근,
         //             GameManager에 count 전달하는 라인 추가
-        if (isDash && GameObject.Find("GameManager").GetComponent<cshTimer>().count > 0)
+        if (isDash && GameObject.Find("GameManager").GetComponent<cshTimer>().curDashcount > 0)
         {
             StartCoroutine(InDash());
-            GameObject.Find("GameManager").GetComponent<cshTimer>().count--;
+            GameObject.Find("GameManager").GetComponent<cshTimer>().curDashcount--;
 
-            //(김승현 추가) UI 업데이트 목적으로 count 감소됐을 때 GameManager에 count 전달하는 라인
-            if(GameManager.instance)
-                GameManager.instance.curDashUpdate(GameObject.Find("GameManager").GetComponent<cshTimer>().count);
+            if(dashUI.Dash)
+                    dashUI.Dash.curDashUpdate(GameObject.Find("GameManager").GetComponent<cshTimer>().curDashcount);
         }
     }
     IEnumerator InDash()

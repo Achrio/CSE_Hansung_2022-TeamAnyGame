@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 9194760442139307814}
   m_Layer: 0
   m_Name: "\uC544\uC2A4\uD314\uD2B8 \uB3C4\uB85C"
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 611140796980141428}
   m_Layer: 0
   m_Name: "\uCC28\uC120\uB3C4\uB85C"
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 7069134541783939259}
   m_Layer: 0
   m_Name: "\uC544\uC2A4\uD314\uD2B8 \uB3C4\uB85C (1)"
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,10 +357,25 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6240983478841455686, guid: 06d02d942dc17e64fa6a7987a12bf6ac,
+        type: 3}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240983478881164007, guid: 06d02d942dc17e64fa6a7987a12bf6ac,
+        type: 3}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
     - target: {fileID: 6240983479005515586, guid: 06d02d942dc17e64fa6a7987a12bf6ac,
         type: 3}
       propertyPath: m_Name
       value: "\uCC28\uC120\uB3C4\uB85C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240983479005515586, guid: 06d02d942dc17e64fa6a7987a12bf6ac,
+        type: 3}
+      propertyPath: m_TagString
+      value: ground
       objectReference: {fileID: 0}
     - target: {fileID: 6762082018949125624, guid: 06d02d942dc17e64fa6a7987a12bf6ac,
         type: 3}

@@ -25,7 +25,7 @@ public class CameraPos {
     private Vector3 _cameraPos;
     private void _switchSideView() {
         _cameraPos.x = _playerPos.x + 8f;
-        _cameraPos.y = _playerPos.y + 1f;
+        _cameraPos.y = _playerPos.y + 2f;
         _cameraPos.z = _playerPos.z - 13f;
     }
     private void _switchShoulderView() {
@@ -161,6 +161,10 @@ public class CameraControl : MonoBehaviour {
         _cameraCollider = this.gameObject.GetComponent<BoxCollider>();
 
         _camera.fieldOfView = 60.0f;
+    }
+
+    void Start() {
+        _cameraTransform.position = new Vector3(8, 2, -13);
     }
 
     void Update() {

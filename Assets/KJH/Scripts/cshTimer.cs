@@ -6,14 +6,14 @@ public class cshTimer : MonoBehaviour
 {
  
     public float setTime = 0.0f;
-    public int dashCount;
-    public int count;
+    public int maxDashCount;
+    public int curDashcount;
     [SerializeField] Text countdownText;
     [SerializeField] Text DashcountText;
 
     void Awake()
     {
-        if(GameManager.instance) dashCount = GameManager.instance.dashValue; //(김승현 수정) 대시 최대값 GameManager에서 전달받음
+        if(GameManager.instance) maxDashCount = GameManager.instance.dash;
         if(countdownText) countdownText.text = setTime.ToString();
     }
     
@@ -22,7 +22,7 @@ public class cshTimer : MonoBehaviour
     {
         Timer();
         if(countdownText) countdownText.text = Mathf.Round(setTime).ToString();
-        if(DashcountText) DashcountText.text = Mathf.Round(dashCount).ToString();
+        if(DashcountText) DashcountText.text = Mathf.Round(maxDashCount).ToString();
     }
     void Timer()
     {
@@ -31,12 +31,11 @@ public class cshTimer : MonoBehaviour
         else if (setTime > 5)
         {
             setTime = 0.0f;
-            if (count < dashCount) {
-                count++;
+            if (curDashcount < maxDashCount) {
+                curDashcount++;
 
-                //(김승현 추가) UI 업데이트 목적으로 count 증가됐을 때 GameManager에 count 전달하는 라인
-                if(GameManager.instance)
-                    GameManager.instance.curDashUpdate(count);
+                if(dashUI.Dash)
+                    dashUI.Dash.curDashUpdate(curDashcount);
             }
         }
     }
