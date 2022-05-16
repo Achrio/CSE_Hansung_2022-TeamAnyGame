@@ -2,7 +2,6 @@
     "money": 0,
     "HP": 5,
     "dash": 3,
-    "isShield": 0,
     "clearTime": [
         0.0,
         0.0,

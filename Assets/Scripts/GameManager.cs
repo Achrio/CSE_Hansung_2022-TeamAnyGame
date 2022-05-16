@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour {
     public int money;
     public int HP;
     public int dash;
-    public int isShield;
     public List<float> clearTime;
 
     void Awake() {
@@ -33,7 +32,6 @@ public class GameManager : MonoBehaviour {
     }
 
     void Start() {
-
         /* 대쉬 UI 임시
         cshTimer timer = this.gameObject.GetComponent<cshTimer>();
         timer.dashCount = this.maxDash; //init cshTimer dashCount
@@ -68,7 +66,6 @@ public class GameManager : MonoBehaviour {
 
         HPUI.HP.hpUpdate(HP);
     }
-    
 }
 
 public class StatusManage {

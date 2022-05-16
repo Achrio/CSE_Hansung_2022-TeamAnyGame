@@ -10,15 +10,16 @@ public class SaveData {
     public int money;
     public int HP;
     public int dash;
-    public int isShield;
     public List<float> clearTime;
-
 }
 
 public class DataManager : MonoBehaviour {
+    [HideInInspector] public static DataManager instance;
     private string _dataPath;
+    public bool isData = false;
 
     void Start() {
+        instance = this;
         _dataPath = Path.Combine(Application.dataPath, "data.json");
         DataLoad();
     }
@@ -28,20 +29,12 @@ public class DataManager : MonoBehaviour {
 
         //init, make saveData
         if(!File.Exists(_dataPath)) {
-            GameManager.instance.money= 0;
-            GameManager.instance.HP = 5;
-            GameManager.instance.dash = 3;
-            GameManager.instance.isShield = 0;
-
-            //Add amount of stages
-            GameManager.instance.clearTime[0] = 0f;
-            GameManager.instance.clearTime[1] = 0f;
-            GameManager.instance.clearTime[2] = 0f;
-
-            DataSave();
+            DataNew();
+            isData = false;
         }
         //load saveData, init fixed value in GameManager
         else {
+            isData = true;
             string loadData = File.ReadAllText(_dataPath);
             saveData = JsonUtility.FromJson<SaveData>(loadData);
 
@@ -49,7 +42,6 @@ public class DataManager : MonoBehaviour {
                 GameManager.instance.money = saveData.money;
                 GameManager.instance.HP = saveData.HP;
                 GameManager.instance.dash = saveData.dash;
-                GameManager.instance.isShield = saveData.isShield;
 
                 //Add amount of stages
                 GameManager.instance.clearTime[0] = saveData.clearTime[0];
@@ -79,5 +71,16 @@ public class DataManager : MonoBehaviour {
     public void DataDelete() {
         System.IO.File.Delete(_dataPath);
         DataLoad();
+    }
+
+    public void DataNew() {
+        GameManager.instance.money = 0;
+        GameManager.instance.HP = 5;
+        GameManager.instance.dash = 3;
+        GameManager.instance.clearTime[0] = 0f;
+        GameManager.instance.clearTime[1] = 0f;
+        GameManager.instance.clearTime[2] = 0f;
+
+        DataSave();
     }
 }
