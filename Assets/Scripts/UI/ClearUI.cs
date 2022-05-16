@@ -35,24 +35,28 @@ public class ClearUI : MonoBehaviour {
                 StartCoroutine("showRecord");
             }
             if(timer > 5f && newRecord) {
-                StartCoroutine("showNewRecord");
+                showNewRecord();
+                GameManager.instance.clearTime[stageNum] = timerUI.instance.time;
+                DataManager.instance.DataSave();
             }
         }
     }
 
     public void clearStage() {
         isClear = true;
+        timerUI.instance.isClear = true;
+        timerUI.instance.gameObject.SetActive(false);
 
         //get Stage Name and Clear Time
         StageName.text = GameManager.instance.stageName[stageNum] + " Clear!";
         ClearTime.text = timerUI.instance.timerText.text;
 
         //get Stage Clear Record
-        curTime = timerUI.instance.time;
-        TimeSpan timespan = TimeSpan.FromSeconds(GameManager.instance.clearTime[stageNum]);
-        Record.text = "record " + timespan.ToString("mm': 'ss'. 'fff");
+        curTime = GameManager.instance.clearTime[stageNum];
+        TimeSpan timespan = TimeSpan.FromSeconds(curTime);
+        Record.text = "record : " + timespan.ToString("mm': 'ss'. 'fff");
 
-        if(curTime < GameManager.instance.clearTime[stageNum] || GameManager.instance.clearTime[stageNum] == 0) {
+        if(GameManager.instance.clearTime[stageNum] > timerUI.instance.time || GameManager.instance.clearTime[stageNum] == 0) {
             if(GameManager.instance.clearTime[stageNum] == 0) Record.text = "";
             newRecord = true;
         }
@@ -94,15 +98,9 @@ public class ClearUI : MonoBehaviour {
         }
     }
 
-    private IEnumerator showNewRecord() {
-        float time = 0f;
+    private void showNewRecord() {
         RectTransform _curPos = NewRecord.gameObject.GetComponent<RectTransform>();
-        Vector3 _fromPos = _curPos.anchoredPosition3D;
         
-        while(time < 1f) {
-            _curPos.anchoredPosition3D = Vector3.Lerp(_fromPos, new Vector3(-300, -50, 0), time);
-            time += Time.deltaTime * 1f;
-            yield return null;
-        }
+        _curPos.anchoredPosition3D = new Vector3(-300, -50, 0);
     }
 }

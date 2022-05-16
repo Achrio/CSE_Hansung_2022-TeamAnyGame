@@ -112,6 +112,7 @@ public class control : MonoBehaviour
     {
         FadeScreen.instance.fadein();
         GameManager.instance.curHPUpdate(5);
+        DataManager.instance.DataSave();
         SceneLoadingManager.LoadScene("LobbyScene");
     }
     private void OnCollisionEnter(Collision collision)

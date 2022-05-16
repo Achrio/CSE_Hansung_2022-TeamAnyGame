@@ -7,7 +7,7 @@ public class DontDestroy : MonoBehaviour {
 
     private void Awake() {
         if(instance != null) {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
             return;
         } 
         instance = this;

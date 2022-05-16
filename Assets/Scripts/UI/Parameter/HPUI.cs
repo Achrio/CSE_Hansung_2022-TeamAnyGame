@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class HPUI : MonoBehaviour {
     private int _curHP;
-    public TextMeshProUGUI HPText; //add in Inspector
+    public Text HPText; //add in Inspector
 
     [HideInInspector] public static HPUI HP;
 

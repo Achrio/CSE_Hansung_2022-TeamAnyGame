@@ -93,7 +93,8 @@ public class MainMenuUI : MonoBehaviour {
     }
 
     public void ContinueGame() {
-        SceneLoadingManager.LoadScene("LobbyScene");
+        //SceneLoadingManager.LoadScene("LobbyScene");
+        SceneLoadingManager.LoadScene("Running1");
     }
 
     public void NewGame() {
@@ -116,7 +117,8 @@ public class MainMenuUI : MonoBehaviour {
 
     public void NewGameAccept() {
         DataManager.instance.DataDelete();
-        SceneLoadingManager.LoadScene("LobbyScene");
+        //SceneLoadingManager.LoadScene("LobbyScene");
+        SceneLoadingManager.LoadScene("Running1");
     }
 
     //End Application

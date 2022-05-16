@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class timerUI : MonoBehaviour {
-    public TextMeshProUGUI timerText; //add in Inspector
+    public Text timerText; //add in Inspector
     public float time;
     public bool isClear = false;
     
