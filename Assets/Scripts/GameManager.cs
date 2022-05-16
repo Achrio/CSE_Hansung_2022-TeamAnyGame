@@ -7,7 +7,9 @@ using TMPro;
 
 
 public class GameManager : MonoBehaviour {
-    private StatusManage _status = new StatusManage();
+    public bool isPause = false;
+    public bool isOver = false;
+    
     [HideInInspector] public static GameManager instance;
 
     [Header ("Screens")]
@@ -41,18 +43,7 @@ public class GameManager : MonoBehaviour {
 
     //Game Status Change
     void Update() {
-        //pause action
-        if(!_status.isPause && Input.GetKeyDown(KeyCode.Escape)) {
-            _status.onPause();
-            pauseScreen.SetActive(true);
-            return;
-        }
-        //resume action
-        if(_status.isPause && Input.GetKeyDown(KeyCode.Escape)) {
-            _status.onResume();
-            pauseScreen.SetActive(false);
-            return;
-        }
+        
     }
 
     //UI Update (Called by each object's func)
@@ -65,20 +56,5 @@ public class GameManager : MonoBehaviour {
         HP += changeValue;
 
         HPUI.HP.hpUpdate(HP);
-    }
-}
-
-public class StatusManage {
-    public bool isPause = false;
-    public bool isOver = false;
-
-    public void onPause() {
-        isPause = true;
-        Time.timeScale = 0;
-    }
-
-    public void onResume() {
-        isPause = false;
-        Time.timeScale = 1;
     }
 }
