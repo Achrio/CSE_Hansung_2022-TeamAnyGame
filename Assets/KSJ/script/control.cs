@@ -98,11 +98,12 @@ public class control : MonoBehaviour
     }
     public void Died()
     {
-        if (GameManager.instance.HP <= 0)
-        {
-            unichan_ani.SetBool("died", true);
-            Invoke("FadeOut", 3f);
-            Invoke("Wait2sec", 5f);
+        if(GameManager.instance) {
+            if (GameManager.instance.HP <= 0) {
+                unichan_ani.SetBool("died", true);
+                Invoke("FadeOut", 3f);
+                Invoke("Wait2sec", 5f);
+            }
         }
     }
     void FadeOut() {

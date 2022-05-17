@@ -17,7 +17,8 @@ public class StartUI : MonoBehaviour {
     private bool _appeared = false;
 
     void Start() {
-        stageName.text = GameManager.instance.stageName[stageNum];
+        if(GameManager.instance)
+            stageName.text = GameManager.instance.stageName[stageNum];
         InvokeRepeating("Appear", 2f, 0.1f);
     }
 

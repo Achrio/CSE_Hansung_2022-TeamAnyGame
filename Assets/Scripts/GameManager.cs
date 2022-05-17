@@ -9,10 +9,6 @@ public class GameManager : MonoBehaviour {
     
     [HideInInspector] public static GameManager instance;
 
-    [Header ("Screens")]
-    public GameObject pauseScreen;              //pause UI Screen (add in Inspector)
-    public GameObject deathScreen;              //death UI Screen (add in Inspector)
-
     [Header ("Stage Names")]
     public List<string> stageName; //stageName (add in Inspector)
     
