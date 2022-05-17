@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RunningStages/Running1.unity
     guid: 23368b03e0869a14e9f591f0520ba3a4
+  - enabled: 1
+    path: Assets/Scenes/metros.unity
+    guid: a7729192ea4c4cb4dbb314e318bc20ad
   m_configObjects: {}

@@ -212,10 +212,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPause: 0
   isOver: 0
-  pauseScreen: {fileID: 0}
-  deathScreen: {fileID: 0}
   stageName:
+  - Metro
   - Running Stage 1
+  - Running Stage 2
   money: 0
   HP: 0
   dash: 0
