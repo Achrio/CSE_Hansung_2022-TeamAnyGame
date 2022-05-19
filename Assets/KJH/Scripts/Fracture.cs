@@ -18,7 +18,14 @@ public class Fracture : MonoBehaviour
     {
         
     }
-    public void Explosion()
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Explosion();
+        }
+    }
+        public void Explosion()
     {
         GameObject tclone = Instantiate(mgoPrefab, transform.position, Quaternion.identity);
         Rigidbody[] trigid = tclone.GetComponentsInChildren<Rigidbody>();
