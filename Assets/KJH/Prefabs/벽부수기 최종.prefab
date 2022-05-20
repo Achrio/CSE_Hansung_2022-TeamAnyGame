@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 16cbcb49772cceb4e82f2aefdf7b367e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0425b644ef837714fad77f284fd4fecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mgoPrefab: {fileID: 3257777760923252058, guid: 08719fba0e7e30a45a552da82ffcd919,
+  mgoPrefab: {fileID: 1647482711603069042, guid: ce8ceadcac0334241b777bc1b7b4f64e,
     type: 3}
   mforce: 600
   moffset: {x: -2, y: 0.5, z: 0}
