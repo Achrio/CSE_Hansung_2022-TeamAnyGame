@@ -15,6 +15,7 @@ public class cshMonster : MonoBehaviour
     public bool isDead;
     public BoxCollider meleeArea;
     public GameObject bullet;
+    public GameObject keyplayer;
 
     public Rigidbody rigidbody;
     public CapsuleCollider capsuleCollider;
@@ -34,7 +35,7 @@ public class cshMonster : MonoBehaviour
             Invoke("ChaseStart", 2);
     }
 
-    void ChaseStart() 
+    void ChaseStart()
     {
         isChase = true;
         animator.SetBool("isWalk", true);
@@ -55,12 +56,13 @@ public class cshMonster : MonoBehaviour
         rigidbody.angularVelocity = Vector3.zero;
     }
 
-    void Targeting() 
+    void Targeting()
     {
         if (!isDead && enemyType != Type.Boss) {
             float targetRadius = 1f;
             float targetRange = 1f;
 
+<<<<<<< HEAD
             switch (enemyType)
             {
                 case Type.Slime:
@@ -92,6 +94,39 @@ public class cshMonster : MonoBehaviour
                     targetRange = 3f;
                     break;
             }
+=======
+        switch (enemyType)
+        {
+            case Type.Slime:
+                targetRadius = 1f;
+                targetRange = 1f;
+                break;
+            case Type.Turtle:
+                targetRadius = 0.75f;
+                targetRange = 3f;
+                break;
+            case Type.Mage:
+                targetRadius = 0.5f;
+                targetRange = 5f;
+                break;
+            case Type.Plant:
+                targetRadius = 1f;
+                targetRange = 1f;
+                break;
+            case Type.Orc:
+                targetRadius = 1f;
+                targetRange = 1f;
+                break;
+            case Type.Skeleton:
+                targetRadius = 1f;
+                targetRange = 1f;
+                break;
+            case Type.Spider:
+                targetRadius = 0.75f;
+                targetRange = 3f;
+                break;
+        }
+>>>>>>> 1053741ad51d3e5dc846ba10fec5a9bce2abaf86
 
             RaycastHit[] raycastHits = Physics.SphereCastAll(transform.position, targetRadius,
                 transform.forward, targetRange, LayerMask.GetMask("Player"));
@@ -112,10 +147,10 @@ public class cshMonster : MonoBehaviour
         switch (enemyType)
         {
             case Type.Slime:
-                
+
                 yield return new WaitForSeconds(0.2f);
                 meleeArea.enabled = true;
-                
+
                 yield return new WaitForSeconds(0.6f);
                 meleeArea.enabled = false;
 
@@ -135,8 +170,8 @@ public class cshMonster : MonoBehaviour
                 break;
             case Type.Mage:
                 yield return new WaitForSeconds(1.45f);
-                GameObject instantBullet = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y+1f, transform.position.z), 
-                    Quaternion.Euler(transform.rotation.x *90, transform.rotation.y, transform.rotation.z*180));
+                GameObject instantBullet = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z),
+                    Quaternion.Euler(transform.rotation.x * 90, transform.rotation.y, transform.rotation.z * 180));
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
                 rigidBullet.velocity = transform.forward * 10;
 
@@ -240,8 +275,14 @@ public class cshMonster : MonoBehaviour
             reactVec += Vector3.up;
             rigidbody.AddForce(reactVec * 5, ForceMode.Impulse);
 
+<<<<<<< HEAD
             if (enemyType != Type.Boss)
                 Destroy(gameObject, 2);
+=======
+            Destroy(gameObject, 2);
+            keyplayer.SendMessage("destroyed");
+
+>>>>>>> 1053741ad51d3e5dc846ba10fec5a9bce2abaf86
         }
     }
 }
