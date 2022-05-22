@@ -14,6 +14,7 @@ public class cshMonster : MonoBehaviour
     public bool isAttack;
     public BoxCollider meleeArea;
     public GameObject bullet;
+    public GameObject keyplayer;
 
     Rigidbody rigidbody;
     CapsuleCollider capsuleCollider;
@@ -32,7 +33,7 @@ public class cshMonster : MonoBehaviour
         Invoke("ChaseStart", 2);
     }
 
-    void ChaseStart() 
+    void ChaseStart()
     {
         isChase = true;
         animator.SetBool("isWalk", true);
@@ -53,12 +54,12 @@ public class cshMonster : MonoBehaviour
         rigidbody.angularVelocity = Vector3.zero;
     }
 
-    void Targeting() 
+    void Targeting()
     {
         float targetRadius = 1f;
         float targetRange = 1f;
 
-        switch (enemyType) 
+        switch (enemyType)
         {
             case Type.Slime:
                 targetRadius = 1f;
@@ -108,10 +109,10 @@ public class cshMonster : MonoBehaviour
         switch (enemyType)
         {
             case Type.Slime:
-                
+
                 yield return new WaitForSeconds(0.2f);
                 meleeArea.enabled = true;
-                
+
                 yield return new WaitForSeconds(0.6f);
                 meleeArea.enabled = false;
 
@@ -131,8 +132,8 @@ public class cshMonster : MonoBehaviour
                 break;
             case Type.Mage:
                 yield return new WaitForSeconds(1.45f);
-                GameObject instantBullet = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y+1f, transform.position.z), 
-                    Quaternion.Euler(transform.rotation.x *90, transform.rotation.y, transform.rotation.z*180));
+                GameObject instantBullet = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z),
+                    Quaternion.Euler(transform.rotation.x * 90, transform.rotation.y, transform.rotation.z * 180));
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
                 rigidBullet.velocity = transform.forward * 10;
 
@@ -235,6 +236,8 @@ public class cshMonster : MonoBehaviour
             rigidbody.AddForce(reactVec * 5, ForceMode.Impulse);
 
             Destroy(gameObject, 2);
+            keyplayer.SendMessage("destroyed");
+
         }
     }
 }
