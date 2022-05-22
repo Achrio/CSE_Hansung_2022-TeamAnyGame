@@ -1,7 +1,10 @@
 {
-    "name": [],
-    "script": [],
-    "money": 0,
-    "health": 5,
-    "inv": []
+    "money": 1000,
+    "HP": 5,
+    "dash": 3,
+    "clearTime": [
+        2.324951171875,
+        0.0,
+        0.0
+    ]
 }

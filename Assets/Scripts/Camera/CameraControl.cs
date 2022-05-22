@@ -25,7 +25,7 @@ public class CameraPos {
     private Vector3 _cameraPos;
     private void _switchSideView() {
         _cameraPos.x = _playerPos.x + 8f;
-        _cameraPos.y = _playerPos.y + 1f;
+        _cameraPos.y = _playerPos.y + 2f;
         _cameraPos.z = _playerPos.z - 13f;
     }
     private void _switchShoulderView() {
@@ -155,6 +155,7 @@ public class CameraControl : MonoBehaviour {
     void Awake() {
         Application.targetFrameRate = 60;
 
+        player = GameObject.Find("Player");
         _camera = this.gameObject.GetComponent<Camera>();
         _cameraTransform = this.gameObject.transform;
         _cameraCollider = this.gameObject.GetComponent<BoxCollider>();
@@ -162,10 +163,15 @@ public class CameraControl : MonoBehaviour {
         _camera.fieldOfView = 60.0f;
     }
 
+    void Start() {
+        _cameraTransform.position = new Vector3(8, 2, -13);
+    }
+
     void Update() {
         _pos.updatePlayerPos(player.transform.position); 
         _cameraCollider.center = transform.InverseTransformPoint(player.transform.position);
 
+        //update Camera Pos to Wanted Pos
         _cameraTransform.position = new Vector3(_pos.getCameraPosX(), _cameraTransform.position.y, _cameraTransform.position.z);
 
         _cameraTransform.position = Vector3.Lerp(_cameraTransform.position,
@@ -181,7 +187,6 @@ public class CameraControl : MonoBehaviour {
     }
     
     //Trigger 충돌시 처리 함수들
-
     private void _swtichView(int view) {
         _pos.setView(view);
         _rot.setView(view);

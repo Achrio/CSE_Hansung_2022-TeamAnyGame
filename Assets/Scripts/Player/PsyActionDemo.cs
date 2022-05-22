@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PsyActionDemo : MonoBehaviour {
-    public GameObject player;
+    private GameObject player;
 
     private Vector3 curPos;
     private Vector3 maxPos;
@@ -15,6 +15,10 @@ public class PsyActionDemo : MonoBehaviour {
     private GameObject _grabbingObject;
     private GameObject _shotObject;
     private PsyObjectDemo objectScript;
+
+    void Awake() {
+        player = GameObject.Find("Player");
+    }
 
     void Update() {
         this.gameObject.transform.position = player.transform.position;

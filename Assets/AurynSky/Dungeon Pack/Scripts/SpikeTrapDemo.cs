@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpikeTrapDemo : MonoBehaviour {
 
     //This script goes on the SpikeTrap prefab;
-
+    public int traptime = 3;
     public Animator spikeTrapAnim; //Animator for the SpikeTrap;
 
     // Use this for initialization
@@ -23,11 +23,11 @@ public class SpikeTrapDemo : MonoBehaviour {
         //play open animation;
         spikeTrapAnim.SetTrigger("open");
         //wait 2 seconds;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(traptime);
         //play close animation;
         spikeTrapAnim.SetTrigger("close");
         //wait 2 seconds;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(traptime);
         //Do it again;
         StartCoroutine(OpenCloseTrap());
 

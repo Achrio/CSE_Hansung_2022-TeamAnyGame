@@ -6,21 +6,23 @@ public class cshTimer : MonoBehaviour
 {
  
     public float setTime = 0.0f;
-    public int count = 3;
+    public int maxDashCount;
+    public int curDashcount;
     [SerializeField] Text countdownText;
     [SerializeField] Text DashcountText;
 
-    void Start()
+    void Awake()
     {
-        //countdownText.text = setTime.ToString();
+        if(GameManager.instance) maxDashCount = GameManager.instance.dash;
+        if(countdownText) countdownText.text = setTime.ToString();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
         Timer();
-        countdownText.text = Mathf.Round(setTime).ToString();
-        DashcountText.text = Mathf.Round(count).ToString();
+        if(countdownText) countdownText.text = Mathf.Round(setTime).ToString();
+        if(DashcountText) DashcountText.text = Mathf.Round(maxDashCount).ToString();
     }
     void Timer()
     {
@@ -29,8 +31,12 @@ public class cshTimer : MonoBehaviour
         else if (setTime > 5)
         {
             setTime = 0.0f;
-            if (count < 3)
-                count++;
+            if (curDashcount < maxDashCount) {
+                curDashcount++;
+
+                if(dashUI.Dash)
+                    dashUI.Dash.curDashUpdate(curDashcount);
+            }
         }
     }
 }

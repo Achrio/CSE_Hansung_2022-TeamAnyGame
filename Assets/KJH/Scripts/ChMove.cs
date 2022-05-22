@@ -40,7 +40,6 @@ public class ChMove : MonoBehaviour
 
     private void Awake()
     {
-
         rigid = GetComponent<Rigidbody>();
         isJump = jumpCount;
     }
@@ -88,10 +87,15 @@ public class ChMove : MonoBehaviour
     }
     void Dash()
     {
-        if (isDash && GameObject.Find("Main Camera").GetComponent<cshTimer>().count > 0)
+        //(김승현 수정) UI 업데이트 용이하게 하기 위해 static으로 cshTimer의 count 접근,
+        //             GameManager에 count 전달하는 라인 추가
+        if (isDash && GameObject.Find("GameManager").GetComponent<cshTimer>().curDashcount > 0)
         {
             StartCoroutine(InDash());
-            GameObject.Find("Main Camera").GetComponent<cshTimer>().count--;
+            GameObject.Find("GameManager").GetComponent<cshTimer>().curDashcount--;
+
+            if(dashUI.Dash)
+                    dashUI.Dash.curDashUpdate(GameObject.Find("GameManager").GetComponent<cshTimer>().curDashcount);
         }
     }
     IEnumerator InDash()
@@ -157,9 +161,7 @@ public class ChMove : MonoBehaviour
         isWallJump = false;
     }
     void ChangeDir()
-    {
-       
-         
+    { 
             dirRight = !dirRight;
             isRight = isRight*-1;
             transform.Rotate(Vector3.up, 180.0f, Space.World);

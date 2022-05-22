@@ -19,6 +19,7 @@ public class DangerLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, EndPosition, Time.deltaTime * 3.5f);
+        //transform.position = Vector3.Lerp(transform.position, EndPosition, Time.deltaTime * 3.5f);
+        transform.Translate(Vector3.forward * 3f);
     }
 }
