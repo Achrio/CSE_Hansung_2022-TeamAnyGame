@@ -64,10 +64,10 @@ Material:
     - _ShieldPatternSize: 1
     - _ShieldRimPower: 7.76
     m_Colors:
-    - _Color: {r: 0.11151922, g: 1, b: 0, a: 1}
-    - _HitColor: {r: 0.006026864, g: 1, b: 0, a: 1}
+    - _Color: {r: 1, g: 0.83204454, b: 0.023584902, a: 1}
+    - _HitColor: {r: 0.962935, g: 1, b: 0.023584902, a: 1}
     - _HitPosition: {r: 0.018740322, g: 0.4738521, b: 0.15847082, a: 0}
     - _IntersectColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShieldPatternColor: {r: 0, g: 0.754717, b: 0.018636776, a: 1}
+    - _ShieldPatternColor: {r: 0.9339623, g: 0.90845436, b: 0.09251513, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []

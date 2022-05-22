@@ -7,10 +7,11 @@ public class control : MonoBehaviour
 {
     private Animator unichan_ani;
     private Rigidbody chan_rigid;
-    private bool isGrounded = false;
+    private bool isGrounded = false;//아직못씀
 
     public float movespeed = 4.0f;
-    public float jumppower = 10.0f;
+    public float jumppower = 4.5f;
+    public int jumpitem;
     public float hp = 2.0f;
 
 
@@ -22,6 +23,7 @@ public class control : MonoBehaviour
         unichan_ani = GetComponent<Animator>();
         attacks = 0;
         hp = 2.0f;
+        jumpitem = 2;
     }
 
     void Update()
@@ -80,14 +82,23 @@ public class control : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!isGrounded)
+            if (jumpitem > 0)
             {
-                isGrounded = true;
                 chan_rigid.AddForce(Vector3.up * jumppower, ForceMode.Impulse);
-                unichan_ani.SetBool("isground", false);
+                if (jumpitem == 2)
+                {
+                    unichan_ani.SetBool("isground", false);
+
+                }
+                if (jumpitem == 1)
+                {
+                    unichan_ani.SetBool("doublej", true);
+                }
+                jumpitem--;
+
             }
         }
-        if (chan_rigid.velocity.y > 0)
+        if (chan_rigid.velocity.y > 0.0f)
         {
             unichan_ani.SetBool("dojump", true);
         }
@@ -120,9 +131,10 @@ public class control : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ground"))
         {
-            isGrounded = false;
             unichan_ani.SetBool("isground", true);
             unichan_ani.SetBool("dojump", false);
+            unichan_ani.SetBool("doublej", false);
+            jumpitem = 2;
         }
     }
     private void Move()
