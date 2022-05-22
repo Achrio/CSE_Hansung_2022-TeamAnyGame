@@ -7,6 +7,26 @@ TagManager:
   - EnemyBullet
   - FieldItem
   - ground
+  - Floor
+  - Throwable
+  - Laser
+  - elebot
+  - eletop
+  - ActionZone4
+  - ActionZone3-2
+  - ActionZonem2
+  - ActionZone2
+  - actionzone1
+  - ActionZonem1
+  - ActionZone3-1
+  - portal3
+  - portal
+  - portal2
+  - ActionZone
+  - ActionZone6a
+  - ActionZone6b
+  - doors
+  - moster
   layers:
   - Default
   - TransparentFX
