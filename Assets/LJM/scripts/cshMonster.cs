@@ -5,22 +5,23 @@ using UnityEngine.AI;
 
 public class cshMonster : MonoBehaviour
 {
-    public enum Type { Slime, Turtle, Mage, Plant, Orc, Skeleton, Spider };
+    public enum Type { Slime, Turtle, Mage, Plant, Orc, Skeleton, Spider, Boss };
     public Type enemyType;
     public int maxHP;
     public int curHP;
     public Transform target;
     public bool isChase;
     public bool isAttack;
+    public bool isDead;
     public BoxCollider meleeArea;
     public GameObject bullet;
     public GameObject keyplayer;
 
-    Rigidbody rigidbody;
-    CapsuleCollider capsuleCollider;
-    Material mat;
-    NavMeshAgent nav;
-    Animator animator;
+    public Rigidbody rigidbody;
+    public CapsuleCollider capsuleCollider;
+    public Material mat;
+    public NavMeshAgent nav;
+    public Animator animator;
 
     private void Awake()
     {
@@ -30,7 +31,8 @@ public class cshMonster : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
-        Invoke("ChaseStart", 2);
+        if(enemyType != Type.Boss)
+            Invoke("ChaseStart", 2);
     }
 
     void ChaseStart()
@@ -41,7 +43,7 @@ public class cshMonster : MonoBehaviour
 
     void Update()
     {
-        if (nav.enabled)
+        if (nav.enabled && enemyType != Type.Boss)
         {
             nav.SetDestination(target.position);
             nav.isStopped = !isChase;
@@ -56,8 +58,42 @@ public class cshMonster : MonoBehaviour
 
     void Targeting()
     {
-        float targetRadius = 1f;
-        float targetRange = 1f;
+        if (!isDead && enemyType != Type.Boss) {
+            float targetRadius = 1f;
+            float targetRange = 1f;
+
+
+            switch (enemyType)
+            {
+                case Type.Slime:
+                    targetRadius = 1f;
+                    targetRange = 1f;
+                    break;
+                case Type.Turtle:
+                    targetRadius = 0.75f;
+                    targetRange = 3f;
+                    break;
+                case Type.Mage:
+                    targetRadius = 0.5f;
+                    targetRange = 5f;
+                    break;
+                case Type.Plant:
+                    targetRadius = 1f;
+                    targetRange = 1f;
+                    break;
+                case Type.Orc:
+                    targetRadius = 1f;
+                    targetRange = 1f;
+                    break;
+                case Type.Skeleton:
+                    targetRadius = 1f;
+                    targetRange = 1f;
+                    break;
+                case Type.Spider:
+                    targetRadius = 0.75f;
+                    targetRange = 3f;
+                    break;
+            }
 
         switch (enemyType)
         {
@@ -91,12 +127,14 @@ public class cshMonster : MonoBehaviour
                 break;
         }
 
-        RaycastHit[] raycastHits = Physics.SphereCastAll(transform.position, targetRadius,
-            transform.forward, targetRange, LayerMask.GetMask("Player"));
 
-        if (raycastHits.Length > 0 && !isAttack)
-        {
-            StartCoroutine(Attack());
+            RaycastHit[] raycastHits = Physics.SphereCastAll(transform.position, targetRadius,
+                transform.forward, targetRange, LayerMask.GetMask("Player"));
+
+            if (raycastHits.Length > 0 && !isAttack)
+            {
+                StartCoroutine(Attack());
+            }
         }
     }
 
@@ -217,7 +255,8 @@ public class cshMonster : MonoBehaviour
 
     IEnumerator OnDamage(Vector3 reactVec)
     {
-        mat.color = Color.red;
+        if(!isDead)
+            mat.color = Color.red;
         yield return new WaitForSeconds(0.1f);
 
         if (curHP > 0)
@@ -228,12 +267,17 @@ public class cshMonster : MonoBehaviour
         {
             mat.color = Color.gray;
             isChase = false;
+            isDead = true;
             nav.enabled = false;
             animator.SetTrigger("doDie");
 
             reactVec = reactVec.normalized;
             reactVec += Vector3.up;
             rigidbody.AddForce(reactVec * 5, ForceMode.Impulse);
+
+
+            if (enemyType != Type.Boss)
+                Destroy(gameObject, 2);
 
             Destroy(gameObject, 2);
             keyplayer.SendMessage("destroyed");

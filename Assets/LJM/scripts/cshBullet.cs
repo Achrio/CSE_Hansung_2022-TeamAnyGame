@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class cshBullet : MonoBehaviour
 {
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +20,13 @@ public class cshBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag != "Monster")
         {
             Destroy(gameObject);
+        }
+        if (other.tag == "Player")
+        {
+            //플레이어 접촉시 실행
         }
     }
 }
