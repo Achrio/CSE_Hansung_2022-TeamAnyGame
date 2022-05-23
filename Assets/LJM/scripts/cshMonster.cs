@@ -62,7 +62,7 @@ public class cshMonster : MonoBehaviour
             float targetRadius = 1f;
             float targetRange = 1f;
 
-<<<<<<< HEAD
+
             switch (enemyType)
             {
                 case Type.Slime:
@@ -94,7 +94,7 @@ public class cshMonster : MonoBehaviour
                     targetRange = 3f;
                     break;
             }
-=======
+
         switch (enemyType)
         {
             case Type.Slime:
@@ -126,7 +126,7 @@ public class cshMonster : MonoBehaviour
                 targetRange = 3f;
                 break;
         }
->>>>>>> 1053741ad51d3e5dc846ba10fec5a9bce2abaf86
+
 
             RaycastHit[] raycastHits = Physics.SphereCastAll(transform.position, targetRadius,
                 transform.forward, targetRange, LayerMask.GetMask("Player"));
@@ -275,14 +275,13 @@ public class cshMonster : MonoBehaviour
             reactVec += Vector3.up;
             rigidbody.AddForce(reactVec * 5, ForceMode.Impulse);
 
-<<<<<<< HEAD
+
             if (enemyType != Type.Boss)
                 Destroy(gameObject, 2);
-=======
+
             Destroy(gameObject, 2);
             keyplayer.SendMessage("destroyed");
 
->>>>>>> 1053741ad51d3e5dc846ba10fec5a9bce2abaf86
         }
     }
 }
