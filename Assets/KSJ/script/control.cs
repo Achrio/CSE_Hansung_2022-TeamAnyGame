@@ -185,6 +185,10 @@ public class control : MonoBehaviour
         {
             unichan_ani.SetBool("damage", true);
         }
+        if (_col.gameObject.tag == "moster")
+        {
+            unichan_ani.SetBool("damage", true);
+        }
     }
     void OnTriggerExit(Collider _col)
     {
@@ -197,6 +201,9 @@ public class control : MonoBehaviour
         {
             unichan_ani.SetBool("damage", false);
         }
-
+        if (_col.gameObject.tag == "moster")
+        {
+            unichan_ani.SetBool("damage", false);
+        }
     }
 }
