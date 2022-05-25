@@ -16,12 +16,17 @@ public class cshMonster : MonoBehaviour
     public BoxCollider meleeArea;
     public GameObject bullet;
     public GameObject keyplayer;
+    
 
     public Rigidbody rigidbody;
     public CapsuleCollider capsuleCollider;
     public Material mat;
     public NavMeshAgent nav;
     public Animator animator;
+    public bool playerin = false;
+    public bool playerout = false;
+    public Transform monsterzone;
+    public Transform dietrans;
 
     private void Awake()
     {
@@ -31,8 +36,22 @@ public class cshMonster : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
-        if(enemyType != Type.Boss)
-            Invoke("ChaseStart", 2);
+        if (enemyType != Type.Boss)
+        {
+            //Invoke("ChaseStart", 2);
+        }
+    }
+
+    public void MonsterOn()
+    {
+        Debug.Log("monsteron");
+        playerin = true;
+
+    }
+    public void MonsterOff()
+    {
+        Debug.Log("monsteroff");
+        playerout = true;
     }
 
     void ChaseStart()
@@ -43,6 +62,19 @@ public class cshMonster : MonoBehaviour
 
     void Update()
     {
+        if (playerin)
+        {
+            Debug.Log("monsteryes");
+            ChaseStart();
+            playerin = false;
+        }
+        if (playerout)
+        {
+            Debug.Log("monsterNO");
+            isChase = false;
+            animator.SetBool("isWalk", false);
+            playerout = false;
+        }
         if (nav.enabled && enemyType != Type.Boss)
         {
             nav.SetDestination(target.position);
@@ -127,12 +159,13 @@ public class cshMonster : MonoBehaviour
                 break;
         }
 
-
             RaycastHit[] raycastHits = Physics.SphereCastAll(transform.position, targetRadius,
                 transform.forward, targetRange, LayerMask.GetMask("Player"));
+            
 
             if (raycastHits.Length > 0 && !isAttack)
             {
+                Debug.Log("attackok");
                 StartCoroutine(Attack());
             }
         }
@@ -253,6 +286,7 @@ public class cshMonster : MonoBehaviour
         }
     }
 
+
     IEnumerator OnDamage(Vector3 reactVec)
     {
         if(!isDead)
@@ -274,10 +308,8 @@ public class cshMonster : MonoBehaviour
             reactVec = reactVec.normalized;
             reactVec += Vector3.up;
             rigidbody.AddForce(reactVec * 5, ForceMode.Impulse);
-
-
-            if (enemyType != Type.Boss)
-                Destroy(gameObject, 2);
+                            
+            monsterzone.SendMessage("zoneoff");
 
             Destroy(gameObject, 2);
             keyplayer.SendMessage("destroyed");
