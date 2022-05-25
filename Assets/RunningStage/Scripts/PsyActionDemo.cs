@@ -24,7 +24,7 @@ public class PsyActionDemo : MonoBehaviour {
         this.gameObject.transform.position = player.transform.position;
 
         if(_isGrabbing && _grabbingObject) {
-            _grabbingObject.transform.position = new Vector3(player.transform.position.x + 3, player.transform.position.y, player.transform.position.z);
+            _grabbingObject.transform.position = new Vector3(player.transform.position.x - 3, player.transform.position.y + 2, player.transform.position.z);
         }
 
         if(!pressed && !_isGrabbing && _detactedObject && Input.GetKeyDown(KeyCode.LeftControl)) {
@@ -35,6 +35,7 @@ public class PsyActionDemo : MonoBehaviour {
 
         if(!pressed && _isGrabbing && _grabbingObject && Input.GetKeyDown(KeyCode.LeftControl)) {
             Debug.Log("Shot");
+            _grabbingObject.transform.position = new Vector3(player.transform.position.x + 3, player.transform.position.y + 2, player.transform.position.z);
             OnShot();
             pressed = true;
         }
@@ -69,6 +70,7 @@ public class PsyActionDemo : MonoBehaviour {
 
         objectScript = _grabbingObject.GetComponent<PsyObjectDemo>();
         objectScript.OutDetect();
+        objectScript.isGrab = true;
 
         _grabbingObject.GetComponent<Collider>().enabled = false;
 
@@ -80,12 +82,13 @@ public class PsyActionDemo : MonoBehaviour {
         _grabbingObject = null;
         _isGrabbing = false;
         
-        _shotObject.tag = "Untagged";
+        _shotObject.tag = "Throwed";
         _shotObject.GetComponent<Collider>().enabled = true;
 
         curPos = _shotObject.transform.position;
         objectScript.maxPos = new Vector3(curPos.x + 100, curPos.y, curPos.z);
         objectScript.isShot = true;
+        objectScript.isGrab = false;
 
         objectScript = null;
     }

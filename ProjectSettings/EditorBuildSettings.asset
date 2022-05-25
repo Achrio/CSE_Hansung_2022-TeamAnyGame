@@ -15,9 +15,15 @@ EditorBuildSettings:
     path: Assets/LJM/Scenes/LobbyScene.unity
     guid: a9beac251fc34ba4d869dbbeaa1059aa
   - enabled: 1
-    path: Assets/Scenes/RunningStages/Running1.unity
-    guid: 23368b03e0869a14e9f591f0520ba3a4
-  - enabled: 1
     path: Assets/Scenes/metro.unity
     guid: a7729192ea4c4cb4dbb314e318bc20ad
+  - enabled: 1
+    path: Assets/Scenes/RunningStages/Running1.unity
+    guid: bbf062c83e98bb74792e664d6f3c6567
+  - enabled: 1
+    path: Assets/Scenes/RunningStages/Running2.unity
+    guid: 23368b03e0869a14e9f591f0520ba3a4
+  - enabled: 1
+    path: Assets/Scenes/RunningStages/Running3.unity
+    guid: 86e64a83f258abe4fb1eab3e86613057
   m_configObjects: {}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PsyObjectDemo : MonoBehaviour {
+    public bool isGrab = false;
     public bool isShot = false;
     public float speed = 2.0f;
     public Vector3 maxPos;
@@ -21,7 +22,10 @@ public class PsyObjectDemo : MonoBehaviour {
     }
 
     void Update() {
-        if(isShot) {
+        if(isGrab) {
+            _curPos.Rotate(new Vector3(30f, 30f, 30f) * Time.deltaTime);
+        }
+        if(!isGrab && isShot) {
             _curPos.position = Vector3.MoveTowards(_curPos.position, maxPos, speed);
             if(_curPos.position.x >= maxPos.x) {
                 Destroy(this.gameObject);
@@ -30,11 +34,11 @@ public class PsyObjectDemo : MonoBehaviour {
     }
 
     public void OnDetect() {
-        _curMat.color = Color.black;
+        _curMat.color = Color.yellow;
     }
 
     public void OutDetect() {
-        _curMat.color = Color.white;
+        _curMat.color = Color.black;
     }
 
     private void OnCollisionEnter(Collision other) {
