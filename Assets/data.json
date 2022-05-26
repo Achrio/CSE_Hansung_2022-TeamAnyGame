@@ -1,16 +1,6 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "money": 1000,
-    "HP": -118,
-=======
     "money": 0,
     "HP": 15,
->>>>>>> 073aa6cfbfee1f38ab99a89e98d52ce5766b950b
-=======
-    "money": 0,
-    "HP": 15,
->>>>>>> 073aa6cfbfee1f38ab99a89e98d52ce5766b950b
     "dash": 3,
     "clearTime": [
         0.0,
