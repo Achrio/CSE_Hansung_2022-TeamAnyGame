@@ -25,6 +25,7 @@ TagManager:
   - ActionZone3-1
   - doors
   - moster
+  - Sword
   layers:
   - Default
   - TransparentFX

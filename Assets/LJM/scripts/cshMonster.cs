@@ -265,7 +265,7 @@ public class cshMonster : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Sword")
         {
             curHP -= 10;
             Vector3 reactVec = transform.position - other.transform.position;
@@ -277,7 +277,7 @@ public class cshMonster : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Sword")
         {
             curHP -= 10;
             Vector3 reactVec = transform.position - collision.gameObject.transform.position;
