@@ -270,7 +270,8 @@ public class cshMonster : MonoBehaviour
             curHP -= 10;
             Vector3 reactVec = transform.position - other.transform.position;
 
-            StartCoroutine(OnDamage(reactVec));
+            if(!isDead)
+                StartCoroutine(OnDamage(reactVec));
         }
     }
 
@@ -281,7 +282,8 @@ public class cshMonster : MonoBehaviour
             curHP -= 10;
             Vector3 reactVec = transform.position - collision.gameObject.transform.position;
 
-            StartCoroutine(OnDamage(reactVec));
+            if (!isDead)
+                StartCoroutine(OnDamage(reactVec));
         }
     }
 
@@ -307,8 +309,15 @@ public class cshMonster : MonoBehaviour
             reactVec = reactVec.normalized;
             reactVec += Vector3.up;
             rigidbody.AddForce(reactVec * 5, ForceMode.Impulse);
+
+            rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+
+            if (enemyType != Type.Boss)
+                Destroy(gameObject, 2);
+
                             
             monsterzone.SendMessage("zoneoff");
+
 
             Destroy(gameObject, 2);
             keyplayer.SendMessage("destroyed");
