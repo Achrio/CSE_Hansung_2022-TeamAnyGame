@@ -35,6 +35,7 @@ public class cshMonster : MonoBehaviour
         mat = GetComponentInChildren<SkinnedMeshRenderer>().material;
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        target = GameObject.Find("Player").gameObject.transform;
 
         if (enemyType != Type.Boss)
         {
@@ -173,6 +174,7 @@ public class cshMonster : MonoBehaviour
 
     IEnumerator Attack()
     {
+        Debug.Log("Attacking");
         isChase = false;
         isAttack = true;
         animator.SetBool("isAttack", true);
@@ -294,6 +296,8 @@ public class cshMonster : MonoBehaviour
             if (!isDead)
                 StartCoroutine(OnDamage(reactVec));
         }
+
+        
     }
 
 

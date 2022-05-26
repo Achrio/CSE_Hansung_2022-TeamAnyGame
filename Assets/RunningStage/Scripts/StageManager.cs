@@ -16,7 +16,7 @@ public class StageManager : MonoBehaviour {
     [Header ("Enemy/Obstacle Tiles")]
     public List<GameObject> tileB;
 
-    private float _tilePos = 0f; //new Tile Instantiate pos
+    private float _tilePos = 0f;    //new Tile Instantiate pos
     private bool _tileType = false; //new Tile type (normal/enemy+obstacle)
 
     //Update Tile
@@ -26,7 +26,7 @@ public class StageManager : MonoBehaviour {
 
         //Destroy Previous Tile
         if(prevTile) {
-            Destroy(prevTile, 5f);
+            Destroy(prevTile, 3f);
             if(pixelize) {
                 GameObject effect = Instantiate(pixelize, new Vector3(_tilePos, 0, 0), new Quaternion(0, 0, 0, 0));
                 Destroy(effect, 10f);
