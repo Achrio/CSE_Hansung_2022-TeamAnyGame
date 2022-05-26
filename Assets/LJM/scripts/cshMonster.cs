@@ -26,7 +26,6 @@ public class cshMonster : MonoBehaviour
     public bool playerin = false;
     public bool playerout = false;
     public Transform monsterzone;
-    public Transform dietrans;
 
     private void Awake()
     {

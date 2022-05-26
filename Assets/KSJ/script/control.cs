@@ -106,6 +106,7 @@ public class control : MonoBehaviour
     public void dmgd()
     {
         GameManager.instance.HP--;
+        hp--;
     }
     public void Died()
     {
