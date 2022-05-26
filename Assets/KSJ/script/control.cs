@@ -112,7 +112,7 @@ public class control : MonoBehaviour
         if(GameManager.instance) {
             if (GameManager.instance.HP <= 0) {
                 unichan_ani.SetBool("died", true);
-                //Invoke("FadeOut", 3f);
+                Invoke("FadeOut", 3f);
                 Invoke("Wait2sec", 5f);
             }
         }
@@ -122,9 +122,10 @@ public class control : MonoBehaviour
     }
     void Wait2sec()
     {
-        //FadeScreen.instance.fadein();
-        GameManager.instance.curHPUpdate(5);
+        FadeScreen.instance.fadein();
+        GameManager.instance.HP = 15;
         DataManager.instance.DataSave();
+        DataManager.instance.DataLoad();
         SceneLoadingManager.LoadScene("LobbyScene");
     }
     private void OnCollisionEnter(Collision collision)

@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 4443265027705482807}
   m_Layer: 0
   m_Name: SlimePBR
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539,8 +539,19 @@ MonoBehaviour:
   target: {fileID: 0}
   isChase: 0
   isAttack: 0
+  isDead: 0
   meleeArea: {fileID: 4443265027439781101}
   bullet: {fileID: 0}
+  keyplayer: {fileID: 0}
+  rigidbody: {fileID: 0}
+  capsuleCollider: {fileID: 0}
+  mat: {fileID: 0}
+  nav: {fileID: 0}
+  animator: {fileID: 0}
+  playerin: 0
+  playerout: 0
+  monsterzone: {fileID: 0}
+  dietrans: {fileID: 0}
 --- !u!1 &4444956413828678588
 GameObject:
   m_ObjectHideFlags: 0

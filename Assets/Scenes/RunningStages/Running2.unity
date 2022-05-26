@@ -1082,6 +1082,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2411419490106550757, guid: 16dadcad3043c184e8bf839413fea124,
+        type: 3}
+      propertyPath: stageNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411419491233270841, guid: 16dadcad3043c184e8bf839413fea124,
+        type: 3}
+      propertyPath: stageNum
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4093055297631171868, guid: 16dadcad3043c184e8bf839413fea124,
         type: 3}
       propertyPath: m_Pivot.x

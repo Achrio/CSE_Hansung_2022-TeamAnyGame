@@ -11,7 +11,7 @@ public class LightInteract : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player") {
-            _light.intensity = 20;
+            _light.intensity = 30;
         }
     }
 }

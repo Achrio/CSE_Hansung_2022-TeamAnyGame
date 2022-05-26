@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
         clearTime.Add(0f);
         clearTime.Add(0f);
         clearTime.Add(0f);
+        clearTime.Add(0f);
     }
 
     void Start() {
