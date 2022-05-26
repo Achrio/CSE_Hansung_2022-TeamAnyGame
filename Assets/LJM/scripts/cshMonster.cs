@@ -13,6 +13,7 @@ public class cshMonster : MonoBehaviour
     public bool isChase;
     public bool isAttack;
     public bool isDead;
+    public bool isMetrobania = true;
     public BoxCollider meleeArea;
     public GameObject bullet;
     public GameObject keyplayer;
@@ -285,6 +286,14 @@ public class cshMonster : MonoBehaviour
             if (!isDead)
                 StartCoroutine(OnDamage(reactVec));
         }
+
+        if(collision.gameObject.tag == "Throwed") {
+            curHP -= 1000;
+            Vector3 reactVec = transform.position - collision.gameObject.transform.position;
+
+            if (!isDead)
+                StartCoroutine(OnDamage(reactVec));
+        }
     }
 
 
@@ -300,10 +309,11 @@ public class cshMonster : MonoBehaviour
         }
         else
         {
+            capsuleCollider.enabled = false;
             mat.color = Color.gray;
             isChase = false;
             isDead = true;
-            nav.enabled = false;
+            if(nav) nav.enabled = false;
             animator.SetTrigger("doDie");
 
             reactVec = reactVec.normalized;
@@ -315,12 +325,10 @@ public class cshMonster : MonoBehaviour
             if (enemyType != Type.Boss)
                 Destroy(gameObject, 2);
 
-                            
-            monsterzone.SendMessage("zoneoff");
-
+            if(isMetrobania) monsterzone.SendMessage("zoneoff");
 
             Destroy(gameObject, 2);
-            keyplayer.SendMessage("destroyed");
+            if(isMetrobania) keyplayer.SendMessage("destroyed");
 
         }
     }

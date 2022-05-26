@@ -12,7 +12,8 @@ public class control : MonoBehaviour
     public float movespeed = 4.0f;
     public float jumppower = 4.5f;
     public int jumpitem;
-    public float hp = 2.0f;
+    public Transform sword;
+    public bool died;
 
 
     public int attacks;
@@ -22,7 +23,6 @@ public class control : MonoBehaviour
         chan_rigid = GetComponent<Rigidbody>();
         unichan_ani = GetComponent<Animator>();
         attacks = 0;
-        hp = 2.0f;
         jumpitem = 2;
     }
 
@@ -112,8 +112,22 @@ public class control : MonoBehaviour
         if(GameManager.instance) {
             if (GameManager.instance.HP <= 0) {
                 unichan_ani.SetBool("died", true);
+<<<<<<< HEAD
+<<<<<<< HEAD
                 //Invoke("FadeOut", 3f);
+                died = true;
+=======
+                Invoke("FadeOut", 3f);
+>>>>>>> 073aa6cfbfee1f38ab99a89e98d52ce5766b950b
+=======
+                Invoke("FadeOut", 3f);
+>>>>>>> 073aa6cfbfee1f38ab99a89e98d52ce5766b950b
                 Invoke("Wait2sec", 5f);
+                if (died)
+                {
+                    sword.SendMessage("swordremove");
+                    Debug.Log("swordoff");
+                }
             }
         }
     }
@@ -122,9 +136,25 @@ public class control : MonoBehaviour
     }
     void Wait2sec()
     {
+<<<<<<< HEAD
+<<<<<<< HEAD
+        if (died)
+        {
+            //sword.SendMessage("swords");
+        }
+        died = false;
         //FadeScreen.instance.fadein();
         GameManager.instance.curHPUpdate(5);
+=======
+        FadeScreen.instance.fadein();
+        GameManager.instance.HP = 15;
+>>>>>>> 073aa6cfbfee1f38ab99a89e98d52ce5766b950b
+=======
+        FadeScreen.instance.fadein();
+        GameManager.instance.HP = 15;
+>>>>>>> 073aa6cfbfee1f38ab99a89e98d52ce5766b950b
         DataManager.instance.DataSave();
+        DataManager.instance.DataLoad();
         SceneLoadingManager.LoadScene("LobbyScene");
     }
     private void OnCollisionEnter(Collision collision)

@@ -1733,7 +1733,7 @@ GameObject:
   - component: {fileID: 6140647131502364190}
   m_Layer: 0
   m_Name: EvilMagePBR
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1822,8 +1822,19 @@ MonoBehaviour:
   target: {fileID: 0}
   isChase: 0
   isAttack: 0
+  isDead: 0
   meleeArea: {fileID: 0}
   bullet: {fileID: 3461713611486967263, guid: 77e2de562ad1c624bb37a40923bbcbe3, type: 3}
+  keyplayer: {fileID: 0}
+  rigidbody: {fileID: 0}
+  capsuleCollider: {fileID: 0}
+  mat: {fileID: 0}
+  nav: {fileID: 0}
+  animator: {fileID: 0}
+  playerin: 0
+  playerout: 0
+  monsterzone: {fileID: 0}
+  dietrans: {fileID: 0}
 --- !u!195 &6140647131502364190
 NavMeshAgent:
   m_ObjectHideFlags: 0

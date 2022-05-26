@@ -1302,6 +1302,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 32157855518065273, guid: c6254607a1b73bd41bcbcbd73c9afa5d,
+        type: 3}
+      propertyPath: stageName.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 32157855518065273, guid: c6254607a1b73bd41bcbcbd73c9afa5d,
+        type: 3}
+      propertyPath: stageName.Array.data[1]
+      value: Day
+      objectReference: {fileID: 0}
+    - target: {fileID: 32157855518065273, guid: c6254607a1b73bd41bcbcbd73c9afa5d,
+        type: 3}
+      propertyPath: stageName.Array.data[2]
+      value: Sunset Runner
+      objectReference: {fileID: 0}
+    - target: {fileID: 32157855518065273, guid: c6254607a1b73bd41bcbcbd73c9afa5d,
+        type: 3}
+      propertyPath: stageName.Array.data[3]
+      value: Night Run
+      objectReference: {fileID: 0}
     - target: {fileID: 32157855824418344, guid: c6254607a1b73bd41bcbcbd73c9afa5d,
         type: 3}
       propertyPath: m_Name

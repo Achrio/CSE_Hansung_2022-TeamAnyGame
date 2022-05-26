@@ -5,7 +5,7 @@ using UnityEngine;
 public class PsyObjectDemo : MonoBehaviour {
     public bool isGrab = false;
     public bool isShot = false;
-    public float speed = 2.0f;
+    public float speed = 0.5f;
     public Vector3 maxPos;
 
     private Transform _curPos;
@@ -25,7 +25,7 @@ public class PsyObjectDemo : MonoBehaviour {
         if(isGrab) {
             _curPos.Rotate(new Vector3(30f, 30f, 30f) * Time.deltaTime);
         }
-        if(!isGrab && isShot) {
+        if(isShot) {
             _curPos.position = Vector3.MoveTowards(_curPos.position, maxPos, speed);
             if(_curPos.position.x >= maxPos.x) {
                 Destroy(this.gameObject);

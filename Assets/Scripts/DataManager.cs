@@ -47,6 +47,7 @@ public class DataManager : MonoBehaviour {
                 GameManager.instance.clearTime[0] = saveData.clearTime[0];
                 GameManager.instance.clearTime[1] = saveData.clearTime[1];
                 GameManager.instance.clearTime[2] = saveData.clearTime[2];
+                GameManager.instance.clearTime[3] = saveData.clearTime[3];
             }
         }
 
@@ -80,6 +81,7 @@ public class DataManager : MonoBehaviour {
         GameManager.instance.clearTime[0] = 0f;
         GameManager.instance.clearTime[1] = 0f;
         GameManager.instance.clearTime[2] = 0f;
+        GameManager.instance.clearTime[3] = 0f;
 
         DataSave();
     }
