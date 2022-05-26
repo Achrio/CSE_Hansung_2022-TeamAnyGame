@@ -12,7 +12,8 @@ public class control : MonoBehaviour
     public float movespeed = 4.0f;
     public float jumppower = 4.5f;
     public int jumpitem;
-    public float hp = 2.0f;
+    public Transform sword;
+    public bool died;
 
 
     public int attacks;
@@ -22,7 +23,6 @@ public class control : MonoBehaviour
         chan_rigid = GetComponent<Rigidbody>();
         unichan_ani = GetComponent<Animator>();
         attacks = 0;
-        hp = 2.0f;
         jumpitem = 2;
     }
 
@@ -114,6 +114,12 @@ public class control : MonoBehaviour
                 unichan_ani.SetBool("died", true);
                 Invoke("FadeOut", 3f);
                 Invoke("Wait2sec", 5f);
+                died = true;
+                if (died)
+                {
+                    sword.SendMessage("swordremove");
+                    Debug.Log("swordoff");
+                }
             }
         }
     }
@@ -122,6 +128,7 @@ public class control : MonoBehaviour
     }
     void Wait2sec()
     {
+        died = false;
         FadeScreen.instance.fadein();
         GameManager.instance.HP = 15;
         DataManager.instance.DataSave();
