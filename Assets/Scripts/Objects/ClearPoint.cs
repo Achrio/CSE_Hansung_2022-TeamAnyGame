@@ -21,7 +21,8 @@ public class ClearPoint : MonoBehaviour {
     }
 
     private void ClearFadeout() {
-        FadeScreen.instance.clear = true;
+        if(FadeScreen.instance)
+            FadeScreen.instance.clear = true;
     }
 
     private void ClearLobby() {

@@ -7,6 +7,7 @@ public class CameraManager : MonoBehaviour {
 
     private GameObject _player;
     private Vector3 _curPlayerPos; //player's current position
+    public Vector3 defaultPos = new Vector3(8, 3, -13);     //camera Default Pos
 
     //Camera Move Parameters
     private Vector3 _movePos;     //wanted camera position
@@ -28,7 +29,7 @@ public class CameraManager : MonoBehaviour {
     void Awake() {
         instance = this;
         _player = GameObject.Find("Player");
-        _movePos = new Vector3(8, 2, -13);
+        _movePos = defaultPos;
     }
 
     void Update() {
