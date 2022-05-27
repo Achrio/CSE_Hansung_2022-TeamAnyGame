@@ -26,9 +26,25 @@ public class cshStore : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Store_UI.SetActive(true);
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Store_UI.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Store_UI.SetActive(true);
         }
