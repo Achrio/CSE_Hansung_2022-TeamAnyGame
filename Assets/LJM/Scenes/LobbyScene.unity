@@ -2792,7 +2792,7 @@ GameObject:
   - component: {fileID: 578072214}
   - component: {fileID: 578072213}
   - component: {fileID: 578072219}
-  m_Layer: 15
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -6349,12 +6349,12 @@ PrefabInstance:
     - target: {fileID: 8815404089655095368, guid: 8a065ca975ee34e4888ad4e8cec5122c,
         type: 3}
       propertyPath: curHP
-      value: 10
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8815404089655095368, guid: 8a065ca975ee34e4888ad4e8cec5122c,
         type: 3}
       propertyPath: maxHP
-      value: 10
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8815404089655095368, guid: 8a065ca975ee34e4888ad4e8cec5122c,
         type: 3}
@@ -9427,6 +9427,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerShield
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300379378027193712, guid: 473049461edbc254b9b5e03c6f6e8fc3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3197321570741449936, guid: 473049461edbc254b9b5e03c6f6e8fc3, type: 3}
