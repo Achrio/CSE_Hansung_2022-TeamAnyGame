@@ -9,7 +9,7 @@ public class mosterdis : MonoBehaviour
     public bool monsteroff;
 
     // Update is called once per frame
-    void Update()// ¸ó½ºÅÍ ¿òÁ÷ÀÌ´Â ±× ¹üÀ§¿¡ ³Ö´Â ½ºÅ©¸³Æ®
+    void Update()// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ®
     {
         if (monsteron == true)
         {
@@ -18,7 +18,8 @@ public class mosterdis : MonoBehaviour
         }
         if (monsteroff == true)
         {
-            monster.SendMessage("MonsterOff");
+            if(monster)
+                monster.SendMessage("MonsterOff");
             monsteroff = false;
         }
     }

@@ -1941,7 +1941,7 @@ GameObject:
   - component: {fileID: 8815404089655095370}
   m_Layer: 0
   m_Name: SkeletonPBR
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2032,8 +2032,19 @@ MonoBehaviour:
   target: {fileID: 0}
   isChase: 0
   isAttack: 0
+  isDead: 0
   meleeArea: {fileID: 8815404088796522000}
   bullet: {fileID: 0}
+  keyplayer: {fileID: 0}
+  rigidbody: {fileID: 0}
+  capsuleCollider: {fileID: 0}
+  mat: {fileID: 0}
+  nav: {fileID: 0}
+  animator: {fileID: 0}
+  playerin: 0
+  playerout: 0
+  monsterzone: {fileID: 0}
+  dietrans: {fileID: 0}
 --- !u!195 &8815404089655095370
 NavMeshAgent:
   m_ObjectHideFlags: 0

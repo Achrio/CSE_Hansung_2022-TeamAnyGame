@@ -13,6 +13,7 @@ public class cshMonster : MonoBehaviour
     public bool isChase;
     public bool isAttack;
     public bool isDead;
+    public bool isMetrobania = true;
     public BoxCollider meleeArea;
     public GameObject bullet;
     public GameObject keyplayer;
@@ -26,7 +27,6 @@ public class cshMonster : MonoBehaviour
     public bool playerin = false;
     public bool playerout = false;
     public Transform monsterzone;
-    public Transform dietrans;
 
     private void Awake()
     {
@@ -35,6 +35,7 @@ public class cshMonster : MonoBehaviour
         mat = GetComponentInChildren<SkinnedMeshRenderer>().material;
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        target = GameObject.Find("Player").gameObject.transform;
 
         if (enemyType != Type.Boss)
         {
@@ -173,6 +174,7 @@ public class cshMonster : MonoBehaviour
 
     IEnumerator Attack()
     {
+        Debug.Log("Attacking");
         isChase = false;
         isAttack = true;
         animator.SetBool("isAttack", true);
@@ -266,7 +268,7 @@ public class cshMonster : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Sword")
         {
             curHP -= 10;
             Vector3 reactVec = transform.position - other.transform.position;
@@ -278,7 +280,7 @@ public class cshMonster : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Sword")
         {
             curHP -= 10;
             Vector3 reactVec = transform.position - collision.gameObject.transform.position;
@@ -286,6 +288,16 @@ public class cshMonster : MonoBehaviour
             if (!isDead)
                 StartCoroutine(OnDamage(reactVec));
         }
+
+        if(collision.gameObject.tag == "Throwed") {
+            curHP -= 1000;
+            Vector3 reactVec = transform.position - collision.gameObject.transform.position;
+
+            if (!isDead)
+                StartCoroutine(OnDamage(reactVec));
+        }
+
+        
     }
 
 
@@ -301,10 +313,11 @@ public class cshMonster : MonoBehaviour
         }
         else
         {
+            capsuleCollider.enabled = false;
             mat.color = Color.gray;
             isChase = false;
             isDead = true;
-            nav.enabled = false;
+            if(nav) nav.enabled = false;
             animator.SetTrigger("doDie");
 
             reactVec = reactVec.normalized;
@@ -316,12 +329,10 @@ public class cshMonster : MonoBehaviour
             if (enemyType != Type.Boss)
                 Destroy(gameObject, 2);
 
-                            
-            monsterzone.SendMessage("zoneoff");
-
+            if(isMetrobania) monsterzone.SendMessage("zoneoff");
 
             Destroy(gameObject, 2);
-            keyplayer.SendMessage("destroyed");
+            if(isMetrobania) keyplayer.SendMessage("destroyed");
 
         }
     }

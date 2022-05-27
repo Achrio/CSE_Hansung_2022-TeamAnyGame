@@ -237,7 +237,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3587422895207158875}
-  m_LocalRotation: {x: -0.000000005601928, y: -0.000000012587479, z: -0.40659258, w: 0.91360956}
+  m_LocalRotation: {x: -0.000000005601928, y: -0.000000012587479, z: -0.40659258,
+    w: 0.91360956}
   m_LocalPosition: {x: -0.37328306, y: 0.17870386, z: 0.000000006434258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -842,7 +843,7 @@ GameObject:
   - component: {fileID: 3588481734805724472}
   m_Layer: 0
   m_Name: TurtleShellPBR
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -953,8 +954,19 @@ MonoBehaviour:
   target: {fileID: 0}
   isChase: 0
   isAttack: 0
+  isDead: 0
   meleeArea: {fileID: 3588481735991106555}
   bullet: {fileID: 0}
+  keyplayer: {fileID: 0}
+  rigidbody: {fileID: 0}
+  capsuleCollider: {fileID: 0}
+  mat: {fileID: 0}
+  nav: {fileID: 0}
+  animator: {fileID: 0}
+  playerin: 0
+  playerout: 0
+  monsterzone: {fileID: 0}
+  dietrans: {fileID: 0}
 --- !u!1 &3587851029583328923
 GameObject:
   m_ObjectHideFlags: 0

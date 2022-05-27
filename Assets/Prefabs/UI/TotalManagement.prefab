@@ -124,9 +124,10 @@ MonoBehaviour:
   isPause: 0
   isOver: 0
   stageName:
-  - Metro
-  - Running Stage 1
-  - Running Stage 2
+  - "\uC2E4\uD5D8\uC2E4"
+  - Day
+  - Sunset
+  - Night
   money: 0
   HP: 0
   dash: 0
