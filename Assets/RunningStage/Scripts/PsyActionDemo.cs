@@ -16,8 +16,16 @@ public class PsyActionDemo : MonoBehaviour {
     private GameObject _shotObject;
     private PsyObjectDemo objectScript;
 
+    [Header("Audio Clips")]
+    private AudioSource _audioSource;
+    public List<AudioClip> shootSounds;
+
+    [HideInInspector] public PsyActionDemo instance;
+
     void Awake() {
+        instance = this;
         player = GameObject.Find("Player");
+        _audioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -95,6 +103,10 @@ public class PsyActionDemo : MonoBehaviour {
 
         objectScript.isShot = true;
         objectScript.isGrab = false;
+
+        int play = Random.Range(0, shootSounds.Count);
+        _audioSource.clip = shootSounds[play];
+        _audioSource.Play();
 
         objectScript = null;
     }

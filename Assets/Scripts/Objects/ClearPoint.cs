@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class ClearPoint : MonoBehaviour {
     private bool clear = false;
+    private AudioSource _audioSource;
+
+    void Awake() {
+        _audioSource = this.gameObject.GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter(Collider player) {
         if(player.gameObject.tag == "Player") {
             clear = true;
             ClearUI.clear.clearStage();
             timerUI.instance.isClear = true;
+            this.gameObject.GetComponent<Collider>().enabled = false;
+            _audioSource.Play();
+            StageManager.instance._audioSource.Stop();
         }
     }
 

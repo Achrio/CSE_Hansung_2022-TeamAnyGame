@@ -1071,7 +1071,7 @@ PrefabInstance:
     - target: {fileID: 311045735991377466, guid: a379794f1359eb54cb6a3019750c73f1,
         type: 3}
       propertyPath: movePos.z
-      value: -6
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 311045735991377466, guid: a379794f1359eb54cb6a3019750c73f1,
         type: 3}
@@ -1081,7 +1081,7 @@ PrefabInstance:
     - target: {fileID: 311045735991377466, guid: a379794f1359eb54cb6a3019750c73f1,
         type: 3}
       propertyPath: moveRot.y
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 311045735991377467, guid: a379794f1359eb54cb6a3019750c73f1,
         type: 3}
