@@ -1,7 +1,20 @@
 fileFormatVersion: 2
-guid: a9beac251fc34ba4d869dbbeaa1059aa
+guid: 1f84cc2eeb977d14ba37c0157d39509a
+labels:
+- Tower
+- charmer
+- enchanter
+- environment
+- exterior
+- interior
+- mage
+- paladin
+- pbr
+- tower
+- wizard
+timeCreated: 1520637569
+licenseType: Store
 DefaultImporter:
-  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

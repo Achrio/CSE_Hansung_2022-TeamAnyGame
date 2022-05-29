@@ -16,26 +16,34 @@ public class PsyActionDemo : MonoBehaviour {
     private GameObject _shotObject;
     private PsyObjectDemo objectScript;
 
+    [Header("Audio Clips")]
+    private AudioSource _audioSource;
+    public List<AudioClip> shootSounds;
+
+    [HideInInspector] public PsyActionDemo instance;
+
     void Awake() {
+        instance = this;
         player = GameObject.Find("Player");
+        _audioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     void Update() {
         this.gameObject.transform.position = player.transform.position;
 
-        if(_isGrabbing && _grabbingObject) {
-            _grabbingObject.transform.position = new Vector3(player.transform.position.x - 3, player.transform.position.y + 2, player.transform.position.z);
-        }
-
         if(!pressed && !_isGrabbing && _detactedObject && Input.GetKeyDown(KeyCode.LeftControl)) {
             Debug.Log("Grabbed");
+            Debug.Log(player.transform.rotation.eulerAngles.y);
             OnGrab();
             pressed = true;
         }
 
         if(!pressed && _isGrabbing && _grabbingObject && Input.GetKeyDown(KeyCode.LeftControl)) {
             Debug.Log("Shot");
-            _grabbingObject.transform.position = new Vector3(player.transform.position.x + 3, player.transform.position.y + 2, player.transform.position.z);
+            if(player.transform.rotation.eulerAngles.y == 90f) 
+                _grabbingObject.transform.position = new Vector3(player.transform.position.x + 3, player.transform.position.y + 2, player.transform.position.z);
+            if(player.transform.rotation.eulerAngles.y == 270f) 
+                _grabbingObject.transform.position = new Vector3(player.transform.position.x - 3, player.transform.position.y + 2, player.transform.position.z);
             OnShot();
             pressed = true;
         }
@@ -70,6 +78,7 @@ public class PsyActionDemo : MonoBehaviour {
 
         objectScript = _grabbingObject.GetComponent<PsyObjectDemo>();
         objectScript.OutDetect();
+        objectScript.player = player;
         objectScript.isGrab = true;
 
         _grabbingObject.GetComponent<Collider>().enabled = false;
@@ -86,9 +95,18 @@ public class PsyActionDemo : MonoBehaviour {
         _shotObject.GetComponent<Collider>().enabled = true;
 
         curPos = _shotObject.transform.position;
-        objectScript.maxPos = new Vector3(curPos.x + 100, curPos.y, curPos.z);
+
+        if(player.transform.rotation.eulerAngles.y == 90f)
+            objectScript.maxPos = new Vector3(curPos.x + 50, curPos.y, curPos.z);
+        if(player.transform.rotation.eulerAngles.y == 270f)
+            objectScript.maxPos = new Vector3(curPos.x - 50, curPos.y, curPos.z);
+
         objectScript.isShot = true;
         objectScript.isGrab = false;
+
+        int play = Random.Range(0, shootSounds.Count);
+        _audioSource.clip = shootSounds[play];
+        _audioSource.Play();
 
         objectScript = null;
     }

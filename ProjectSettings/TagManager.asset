@@ -7,34 +7,18 @@ TagManager:
   - ground
   - Throwable
   - Throwed
-  - elebot
-  - portal3
-  - portal
-  - ActionZone4
-  - portal2
-  - eletop
-  - mosterzone
-  - ActionZonem1
-  - ActionZone3-2
-  - ActionZonem2
-  - ActionZone2
-  - actionzone1
-  - ActionZone
-  - ActionZone6a
-  - ActionZone6b
-  - ActionZone3-1
-  - doors
-  - moster
-  - Sword
+  - FieldItem
+  - EnemyBullet
+  - Monster
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
   - PostProcessing
-  - 
+  - Player
   - 
   - 
   - 

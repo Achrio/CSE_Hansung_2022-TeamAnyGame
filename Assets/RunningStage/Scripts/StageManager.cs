@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour {
     [HideInInspector] public static StageManager instance;
-    void Awake() { instance = this; }
 
     [Header ("Previous Tile & Destroy Effect")]
     public GameObject prevTile;
@@ -16,8 +15,20 @@ public class StageManager : MonoBehaviour {
     [Header ("Enemy/Obstacle Tiles")]
     public List<GameObject> tileB;
 
-    private float _tilePos = 0f; //new Tile Instantiate pos
+    [Header("Audio Clips")]
+    public AudioSource _audioSource;
+    public List<AudioClip> stageBGMs;
+
+    private float _tilePos = 0f;    //new Tile Instantiate pos
     private bool _tileType = false; //new Tile type (normal/enemy+obstacle)
+
+    void Awake() {
+        instance = this;
+        _audioSource = this.gameObject.GetComponent<AudioSource>();
+        int play = Random.Range(0, stageBGMs.Count);
+        _audioSource.clip = stageBGMs[play];
+        _audioSource.Play();
+    }
 
     //Update Tile
     public void TileUpdate(GameObject thisTile) {
@@ -26,7 +37,7 @@ public class StageManager : MonoBehaviour {
 
         //Destroy Previous Tile
         if(prevTile) {
-            Destroy(prevTile, 5f);
+            Destroy(prevTile, 3f);
             if(pixelize) {
                 GameObject effect = Instantiate(pixelize, new Vector3(_tilePos, 0, 0), new Quaternion(0, 0, 0, 0));
                 Destroy(effect, 10f);
