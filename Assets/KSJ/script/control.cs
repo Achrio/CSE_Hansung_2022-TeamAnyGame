@@ -14,7 +14,15 @@ public class control : MonoBehaviour
     public int jumpitem;
     public Transform sword;
     public bool died;
+    public bool damagecheck = true;
 
+    public AudioClip audiojump;
+    public AudioClip audiorun;
+    public AudioClip audiodead;
+    public AudioClip audioattack;
+    public AudioClip audioattack2;
+    public AudioClip audiodmgd;
+    AudioSource audioSource;
 
     public int attacks;
 
@@ -24,6 +32,10 @@ public class control : MonoBehaviour
         unichan_ani = GetComponent<Animator>();
         attacks = 0;
         jumpitem = 2;
+    }
+    private void Awake()
+    {
+        this.audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -40,29 +52,25 @@ public class control : MonoBehaviour
         {
             attacks++;
             unichan_ani.SetBool("slash", true);
+            audioSource.clip = audioattack;
+            audioSource.Play();
             if (attacks == 2)
             {
                 unichan_ani.SetBool("slash1", true);
+                audioSource.clip = audioattack2;
+                audioSource.Play();
             }
             if (attacks == 3)
             {
                 unichan_ani.SetBool("slash2", true);
+                audioSource.clip = audioattack;
+                audioSource.Play();
             }
             if(attacks > 3)
             {
                 attacks = 0;
             }
 
-        }
-        if (Input.GetKey(KeyCode.C))
-        {
-            unichan_ani.SetTrigger("attack");
-            Invoke("unattack", 60f * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.V))
-        {
-            unichan_ani.SetTrigger("attack1");
-            Invoke("unattack", 1f * Time.deltaTime);
         }
     }
     void unattack()
@@ -88,11 +96,14 @@ public class control : MonoBehaviour
                 if (jumpitem == 2)
                 {
                     unichan_ani.SetBool("isground", false);
-
+                    audioSource.clip = audiojump;
+                    audioSource.Play();
                 }
                 if (jumpitem == 1)
                 {
                     unichan_ani.SetBool("doublej", true);
+                    audioSource.clip = audiojump;
+                    audioSource.Play();
                 }
                 jumpitem--;
 
@@ -103,9 +114,17 @@ public class control : MonoBehaviour
             unichan_ani.SetBool("dojump", true);
         }
     }
+    void dmgdchk()
+    {
+        damagecheck = true;
+    }
     public void dmgd()
     {
         GameManager.instance.curHPUpdate(-1);
+        damagecheck = false;
+        audioSource.clip = audiodmgd;
+        audioSource.Play();
+        Invoke("dmgdchk", 1.0f);
     }
     public void Died()
     {
@@ -115,6 +134,8 @@ public class control : MonoBehaviour
                 Invoke("FadeOut", 3f);
                 Invoke("Wait2sec", 5f);
                 died = true;
+                audioSource.clip = audiodead;
+                audioSource.Play();
                 if (died)
                 {
                     sword.SendMessage("swordremove");
@@ -160,6 +181,8 @@ public class control : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 getVel *= 2.0f;
+                audioSource.clip = audiorun;
+                audioSource.Play();
             }
         }
         else if (Input.GetKey(KeyCode.RightArrow))
@@ -169,6 +192,8 @@ public class control : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 getVel *= 2.0f;
+                audioSource.clip = audiorun;
+                audioSource.Play();
             }
         }
 
@@ -195,8 +220,11 @@ public class control : MonoBehaviour
         }
         if (_col.gameObject.tag == "moster")
         {
-            unichan_ani.SetBool("damage", true);
-            dmgd();
+            if (damagecheck == true)
+            {
+                unichan_ani.SetBool("damage", true);
+                dmgd();
+            }
         }
     }
     void OnTriggerExit(Collider _col)

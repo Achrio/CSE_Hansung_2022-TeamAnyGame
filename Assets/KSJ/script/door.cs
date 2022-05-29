@@ -46,7 +46,8 @@ public class door : MonoBehaviour
     public bool action6a = false; //2Ãþ 3¹ø¹æ 
     public bool action6b = false;
 
-
+    public bool eletop1 = true;
+    public bool eletop2 = true;
 
     public bool actionelem1t = false;
     public bool actionelem1b = false;
@@ -57,6 +58,8 @@ public class door : MonoBehaviour
     private bool[] keys = new bool[3] { false, false, false };
     private bool[] key2 = new bool[3] { false, false, false };
     private bool[] key3 = new bool[3] { false, false, false };
+    private bool i = true;
+    private bool j = true;
 
     private void Start()
     {
@@ -69,14 +72,24 @@ public class door : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                door1.SendMessage("Play");
+                i = true;
+                if (i)
+                {
+                    door1.SendMessage("Play");
+                    i = false;
+                }
             }
         }
         if (action1)
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                door2.SendMessage("Play");
+                j = true;
+                if (j)
+                {
+                    door2.SendMessage("Play");
+                    j = false;
+                }
             }
         }
 
@@ -118,28 +131,40 @@ public class door : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                elem1.SendMessage("Play");
+                if(eletop1)
+                    elem1.SendMessage("Play");
+                else if(!eletop1)
+                    elem1.SendMessage("Play2");
             }
         }
         if (actionelem1b)
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                elem1.SendMessage("Play2");
+                if (eletop1)
+                    elem1.SendMessage("Play2");
+                else if (!eletop1)
+                    elem1.SendMessage("Play");
             }
         }
         if (actionm1)
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                doorm1.SendMessage("Play");
+                if (eletop1)
+                    doorm1.SendMessage("Play");
+                else if (!eletop1)
+                    doorm1.SendMessage("Play2");
             }
         }
         if (actionm2)
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                doorm1.SendMessage("Play2");
+                if (eletop1)
+                    doorm1.SendMessage("Play2");
+                else if (!eletop1)
+                    doorm1.SendMessage("Play");
             }
         }
         if (action3)
