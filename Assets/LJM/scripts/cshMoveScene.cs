@@ -30,7 +30,7 @@ public class cshMoveScene : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            SceneManager.LoadScene(SceneName);
+            SceneLoadingManager.LoadScene(SceneName);
         }
     }
 
@@ -38,7 +38,7 @@ public class cshMoveScene : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            SceneManager.LoadScene(SceneName);
+            SceneLoadingManager.LoadScene(SceneName);
         }
     }
 }
