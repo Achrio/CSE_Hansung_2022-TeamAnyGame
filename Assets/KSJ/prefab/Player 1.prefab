@@ -1486,10 +1486,13 @@ MonoBehaviour:
   jumpitem: 0
   sword: {fileID: 7646971206294335716}
   died: 0
+  damagecheck: 1
   audiojump: {fileID: 8300000, guid: c572d009afc6e44f7a1a311a5d2099fc, type: 3}
   audiorun: {fileID: 8300000, guid: 23b4a85d442dc4abb8d2c6559b135c3c, type: 3}
   audiodead: {fileID: 8300000, guid: 14442038946004af3aaf906b64944b5f, type: 3}
   audioattack: {fileID: 8300000, guid: 93544ae23f04c47b682e4c22db4335b8, type: 3}
+  audioattack2: {fileID: 8300000, guid: eed2451bbd4264da8b6c27c92df62faf, type: 3}
+  audiodmgd: {fileID: 8300000, guid: 1fea949ca16274adb8e4a6a9b673d938, type: 3}
   attacks: 0
 --- !u!114 &3884333146847562085
 MonoBehaviour:

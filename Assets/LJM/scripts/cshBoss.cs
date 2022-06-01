@@ -51,7 +51,6 @@ public class cshBoss : cshMonster
             //transform.LookAt(target.position + lookVec);
         }
         nav.SetDestination(target.position);
-        nav.isStopped = false;
         bossTargeting();
     }
 
@@ -97,7 +96,7 @@ public class cshBoss : cshMonster
         yield return new WaitForSeconds(0.7f);
         meleeArea.enabled = false;
 
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(4f);
         StartCoroutine(Think());
 
     }
@@ -113,7 +112,7 @@ public class cshBoss : cshMonster
         GameObject rock03 = Instantiate(rock, rockpos03.position, rockpos03.rotation);
         GameObject rock04 = Instantiate(rock, rockpos04.position, rockpos04.rotation);
 
-        yield return new WaitForSeconds(2.25f);
+        yield return new WaitForSeconds(5f);
         StartCoroutine(Think());
 
     }
@@ -135,7 +134,7 @@ public class cshBoss : cshMonster
         cshBossBullet bossBullet03 = dragon03.GetComponent<cshBossBullet>();
         bossBullet03.Target = target;
 
-        yield return new WaitForSeconds(2.25f);
+        yield return new WaitForSeconds(4f);
         StartCoroutine(Think());
 
     }

@@ -15,6 +15,7 @@ public class control : MonoBehaviour
     public Transform sword;
     public bool died;
     public bool damagecheck = true;
+    public bool isattack = true;
 
     public AudioClip audiojump;
     public AudioClip audiorun;
@@ -50,25 +51,28 @@ public class control : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            attacks++;
-            unichan_ani.SetBool("slash", true);
-            audioSource.clip = audioattack;
-            audioSource.Play();
-            if (attacks == 2)
+            if (isattack)
             {
-                unichan_ani.SetBool("slash1", true);
-                audioSource.clip = audioattack2;
-                audioSource.Play();
-            }
-            if (attacks == 3)
-            {
-                unichan_ani.SetBool("slash2", true);
+                attacks++;
+                unichan_ani.SetBool("slash", true);
                 audioSource.clip = audioattack;
                 audioSource.Play();
-            }
-            if(attacks > 3)
-            {
-                attacks = 0;
+                if (attacks == 2)
+                {
+                    unichan_ani.SetBool("slash1", true);
+                    audioSource.clip = audioattack2;
+                    audioSource.Play();
+                }
+                if (attacks == 3)
+                {
+                    unichan_ani.SetBool("slash2", true);
+                    audioSource.clip = audioattack;
+                    audioSource.Play();
+                }
+                if (attacks > 3)
+                {
+                    attacks = 0;
+                }
             }
 
         }
@@ -224,6 +228,7 @@ public class control : MonoBehaviour
             {
                 unichan_ani.SetBool("damage", true);
                 dmgd();
+                isattack = false;
             }
         }
     }
@@ -241,6 +246,7 @@ public class control : MonoBehaviour
         if (_col.gameObject.tag == "moster")
         {
             unichan_ani.SetBool("damage", false);
+            isattack = true;
         }
     }
 }
