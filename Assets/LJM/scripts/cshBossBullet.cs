@@ -45,6 +45,6 @@ public class cshBossBullet : MonoBehaviour
     private void OnDestroy()
     {
         GameObject effect = Instantiate(Effect, gameObject.transform.position, gameObject.transform.rotation);
-        Destroy(effect, 0.5f);
+        Destroy(effect, 2f);
     }
 }

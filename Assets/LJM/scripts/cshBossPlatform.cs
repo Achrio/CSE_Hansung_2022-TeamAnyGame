@@ -18,7 +18,7 @@ public class cshBossPlatform : MonoBehaviour
     }
 
     IEnumerator Blink() {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(10f);
         if (isEnabled)
         {
             isEnabled = false;
