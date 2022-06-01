@@ -20,7 +20,7 @@ public class cshMoveScene : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             SceneManager.LoadScene(SceneName);
         }
@@ -28,7 +28,7 @@ public class cshMoveScene : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             SceneLoadingManager.LoadScene(SceneName);
         }
@@ -36,7 +36,7 @@ public class cshMoveScene : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             SceneLoadingManager.LoadScene(SceneName);
         }
