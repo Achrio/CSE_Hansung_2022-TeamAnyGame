@@ -22,6 +22,7 @@ public class Missile : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             Instantiate(effect,fosef.transform.position,fosef.transform.rotation);
+            GameManager.instance.curHPUpdate(-1);
             Destroy(gameObject);
         }
     }
