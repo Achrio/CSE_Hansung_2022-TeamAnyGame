@@ -37,8 +37,7 @@ public class cshBossBullet : MonoBehaviour
         }
         if (other.tag == "Player")
         {
-            //플레이어 접촉시 실행
-            //GameObject.Find("PlayerShield").GetComponent<cshPlayerShield>().damage = 10;
+            GameManager.instance.curHPUpdate(-1);
         }
     }
 
