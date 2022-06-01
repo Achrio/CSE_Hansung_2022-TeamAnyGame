@@ -12,6 +12,8 @@ public class cshBoss : cshMonster
     public Transform rockpos02;
     public Transform rockpos03;
     public Transform rockpos04;
+    public BoxCollider meleeArea1;
+    public BoxCollider meleeArea2;
 
     Vector3 lookVec;
     Vector3 tauntVec;
@@ -92,9 +94,9 @@ public class cshBoss : cshMonster
 
     IEnumerator Atk01() {
         animator.SetTrigger("doAtk01");
-        meleeArea.enabled = true;
+        meleeArea2.enabled = true;
         yield return new WaitForSeconds(0.7f);
-        meleeArea.enabled = false;
+        meleeArea2.enabled = false;
 
         yield return new WaitForSeconds(4f);
         StartCoroutine(Think());
@@ -104,9 +106,9 @@ public class cshBoss : cshMonster
     {
         animator.SetTrigger("doAtk02");
         yield return new WaitForSeconds(0.3f);
-        meleeArea.enabled = true;
+        meleeArea1.enabled = true;
         yield return new WaitForSeconds(0.45f);
-        meleeArea.enabled = false;
+        meleeArea1.enabled = false;
         GameObject rock01 = Instantiate(rock, rockpos01.position, rockpos01.rotation);
         GameObject rock02 = Instantiate(rock, rockpos02.position, rockpos02.rotation);
         GameObject rock03 = Instantiate(rock, rockpos03.position, rockpos03.rotation);

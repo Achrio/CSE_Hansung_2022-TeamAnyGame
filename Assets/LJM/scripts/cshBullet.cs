@@ -15,7 +15,7 @@ public class cshBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Destroy(gameObject, 3.0f);
     }
 
     private void OnTriggerEnter(Collider other)

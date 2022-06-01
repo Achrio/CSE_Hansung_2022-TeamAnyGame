@@ -5,12 +5,14 @@ using UnityEngine;
 public class cshBossPlatform : MonoBehaviour
 {
     public bool isEnabled;
+    public float time;
+
     private void Awake()
     {
         isEnabled = true;
     }
 
-    private void Update()
+    private void Start()
     {
         StartCoroutine(Blink());
     }
@@ -25,6 +27,8 @@ public class cshBossPlatform : MonoBehaviour
         {
             isEnabled = true;
         }
-        gameObject.SetActive(isEnabled);
+        gameObject.GetComponent<MeshRenderer>().enabled = isEnabled;
+        gameObject.GetComponent<BoxCollider>().enabled = isEnabled;
+        StartCoroutine(Blink());
     }
 }
