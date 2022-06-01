@@ -14,8 +14,6 @@ public class StartUI : MonoBehaviour {
     private Color _color = Color.white;
     private float alpha = 0f;
 
-    private bool _appeared = false;
-
     void Start() {
         if(GameManager.instance)
             stageName.text = GameManager.instance.stageName[stageNum];

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class LobbyUI : MonoBehaviour {
     public GameObject stageInfo;
     [HideInInspector] public static LobbyUI instance;
-    private bool _portal = false;
     private int _stage;
 
     [Header ("Stage Info")]
@@ -19,7 +18,6 @@ public class LobbyUI : MonoBehaviour {
     }
 
     public void inPortal(int stage) {
-        _portal = true;
         stageInfo.SetActive(true);
         
         _stage = stage;
@@ -32,7 +30,6 @@ public class LobbyUI : MonoBehaviour {
         else stageClearTime.text = timespan.ToString("mm': 'ss'. 'fff");
     }
     public void outPortal() {
-        _portal = false;
         stageInfo.SetActive(false);
     }
 }
