@@ -16,8 +16,6 @@ public class PauseUI : MonoBehaviour {
     private bool isCaution = false;
     private int highlight = 0;
 
-    private bool pause = true;
-
     void Update() {
         //In Pause Menu
         if(!isCaution) {

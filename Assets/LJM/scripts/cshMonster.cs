@@ -239,7 +239,9 @@ public class cshMonster : MonoBehaviour
                 yield return new WaitForSeconds(0.47f);
                 meleeArea.enabled = false;
 
-                yield return new WaitForSeconds(0.1f);
+                animator.SetBool("isAttack", false);
+
+                yield return new WaitForSeconds(3f);
                 break;
             case Type.Spider:
                 yield return new WaitForSeconds(0.1f);
@@ -313,7 +315,8 @@ public class cshMonster : MonoBehaviour
         }
         else
         {
-            capsuleCollider.enabled = false;
+            if (enemyType != Type.Boss)
+                capsuleCollider.enabled = false;
             mat.color = Color.gray;
             isChase = false;
             isDead = true;
@@ -328,11 +331,12 @@ public class cshMonster : MonoBehaviour
 
             if (enemyType != Type.Boss)
                 Destroy(gameObject, 2);
-
-            if(isMetrobania) monsterzone.SendMessage("zoneoff");
+            if (enemyType != Type.Boss)
+                if (isMetrobania) monsterzone.SendMessage("zoneoff");
 
             Destroy(gameObject, 2);
-            if(isMetrobania) keyplayer.SendMessage("destroyed");
+            if (enemyType != Type.Boss)
+                if (isMetrobania) keyplayer.SendMessage("destroyed");
 
         }
     }

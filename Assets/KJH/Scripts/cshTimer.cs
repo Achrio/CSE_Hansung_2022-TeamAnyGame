@@ -13,7 +13,7 @@ public class cshTimer : MonoBehaviour
 
     void Awake()
     {
-        if(GameManager.instance) maxDashCount = GameManager.instance.dash;
+        
         if(countdownText) countdownText.text = setTime.ToString();
     }
     
