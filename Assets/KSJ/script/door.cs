@@ -258,6 +258,7 @@ public class door : MonoBehaviour
         if (_col.gameObject.tag == "ActionZone")
         {
             action1 = true;
+
         }
         if (_col.gameObject.tag == "ActionZone2")
         {

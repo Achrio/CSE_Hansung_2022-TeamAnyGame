@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class buttons : MonoBehaviour
 {
+    NoticeUI _notice;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        _notice = FindObjectOfType<NoticeUI>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider _col)
     {
-        
+        if(_col.gameObject.tag == "Player")
+        {
+            _notice.SUB("");
+        }
+    }
+    void OnTriggerExit(Collider _col)
+    {
+        if (_col.gameObject.tag == "Player")
+        {
+            _notice.SUBDEL();
+        }
     }
 }
