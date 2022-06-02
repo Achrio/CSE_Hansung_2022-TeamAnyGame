@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 306859447}
-  m_IndirectSpecularColor: {r: 0.35237232, g: 0.72443175, b: 0.9583093, a: 1}
+  m_IndirectSpecularColor: {r: 0.3523782, g: 0.7241868, b: 0.9583921, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1196,7 +1196,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 52.9, y: 130.1, z: 0}
 --- !u!123 &306859449
 LensFlare:
@@ -1269,8 +1269,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 70, y: 35}
-  m_SizeDelta: {x: -646, y: -220}
+  m_AnchoredPosition: {x: 43, y: 95}
+  m_SizeDelta: {x: -947.7068, y: -443.0253}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &307305403
 MonoBehaviour:
@@ -2102,8 +2102,9 @@ GameObject:
   - component: {fileID: 514755463}
   - component: {fileID: 514755465}
   - component: {fileID: 514755464}
+  - component: {fileID: 514755466}
   m_Layer: 0
-  m_Name: ShopArea
+  m_Name: PortalArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2267,6 +2268,18 @@ MonoBehaviour:
   portal: {fileID: 1906231393}
   stageNum: 2
   isOn: 0
+--- !u!114 &514755466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514755460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37dbe1674f37674783d69887d7498ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &563767597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2659,7 +2672,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &670275863
 GameObject:
@@ -5479,7 +5492,7 @@ PrefabInstance:
     - target: {fileID: 867883491766882843, guid: 628bdf88b6c0a3e46803632b2fca7224,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 867883491766882843, guid: 628bdf88b6c0a3e46803632b2fca7224,
         type: 3}
@@ -6322,7 +6335,7 @@ Transform:
   - {fileID: 1979515878}
   - {fileID: 1004413800}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &1932689523
 PrefabInstance:
@@ -6592,7 +6605,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1979515877
 GameObject:
@@ -6887,7 +6900,7 @@ Transform:
   - {fileID: 374836382}
   - {fileID: 1140916824}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &2020773961
 GameObject:
@@ -7360,7 +7373,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 18.485, y: 47.74, z: 46.711002}
 --- !u!1001 &2074791031
 PrefabInstance:
@@ -7678,7 +7691,7 @@ PrefabInstance:
     - target: {fileID: 867883491766882843, guid: 628bdf88b6c0a3e46803632b2fca7224,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 867883491766882843, guid: 628bdf88b6c0a3e46803632b2fca7224,
         type: 3}
@@ -7847,7 +7860,7 @@ PrefabInstance:
     - target: {fileID: 3360587891592593308, guid: ad2ed2ccaa7d3e74090f5e103a97b4d0,
         type: 3}
       propertyPath: m_Name
-      value: Shop
+      value: Portal_Boss
       objectReference: {fileID: 0}
     - target: {fileID: 3360587891592593308, guid: ad2ed2ccaa7d3e74090f5e103a97b4d0,
         type: 3}
@@ -7862,7 +7875,7 @@ PrefabInstance:
     - target: {fileID: 3362512610464179336, guid: ad2ed2ccaa7d3e74090f5e103a97b4d0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3362512610464179336, guid: ad2ed2ccaa7d3e74090f5e103a97b4d0,
         type: 3}
@@ -8188,6 +8201,11 @@ PrefabInstance:
         type: 3}
       propertyPath: doorm1
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226908879049163159, guid: f5d5065a05b501f4fa0b4d9e5ef3f6b5,
+        type: 3}
+      propertyPath: jumppower
+      value: 6.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5d5065a05b501f4fa0b4d9e5ef3f6b5, type: 3}
