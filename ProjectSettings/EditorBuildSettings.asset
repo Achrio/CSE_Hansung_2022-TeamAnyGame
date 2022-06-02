@@ -17,10 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/metros.unity
     guid: 56950730922d1144da1028b23908b705
-  - enabled: 1
+  - enabled: 0
     path: Assets/LJM/Scenes/TestScene.unity
     guid: a9beac251fc34ba4d869dbbeaa1059aa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/metro.unity
     guid: a7729192ea4c4cb4dbb314e318bc20ad
   - enabled: 1

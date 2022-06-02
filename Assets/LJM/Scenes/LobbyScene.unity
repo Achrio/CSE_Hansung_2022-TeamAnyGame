@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 306859447}
-  m_IndirectSpecularColor: {r: 0.3523782, g: 0.7241868, b: 0.9583921, a: 1}
+  m_IndirectSpecularColor: {r: 0.35237232, g: 0.72443175, b: 0.9583093, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2267,7 +2267,7 @@ MonoBehaviour:
   PortalAudio: {fileID: 8300000, guid: 24418ecb67c97c248bdce8c371b2e70f, type: 3}
   portal: {fileID: 1906231393}
   stageNum: 2
-  isOn: 0
+  isOn: 1
 --- !u!114 &514755466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5324,7 +5324,7 @@ MonoBehaviour:
   PortalAudio: {fileID: 8300000, guid: 24418ecb67c97c248bdce8c371b2e70f, type: 3}
   portal: {fileID: 365027483}
   stageNum: 1
-  isOn: 0
+  isOn: 1
 --- !u!114 &1639278896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6116,7 +6116,7 @@ MonoBehaviour:
   PortalAudio: {fileID: 8300000, guid: 24418ecb67c97c248bdce8c371b2e70f, type: 3}
   portal: {fileID: 1265874919}
   stageNum: 0
-  isOn: 0
+  isOn: 1
 --- !u!114 &1908188438
 MonoBehaviour:
   m_ObjectHideFlags: 0

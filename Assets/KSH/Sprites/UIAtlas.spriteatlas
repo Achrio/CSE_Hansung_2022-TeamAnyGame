@@ -45,11 +45,19 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 422de6d1e4739224a8c2afd13cbb987d, type: 3}
   - {fileID: 21300000, guid: a09486e303c006b43bbdc6c019f7f4d6, type: 3}
+  - {fileID: 21300000, guid: 0f0bd2349f53a494faa9b3e590c5bc48, type: 3}
+  - {fileID: 21300000, guid: 7dbdeac94b3ac5e41b0415c4a91f2526, type: 3}
   - {fileID: 21300000, guid: ec01492b921d4c540a0f7a2cd53be911, type: 3}
+  - {fileID: 21300000, guid: 7b75ed4d2843d9847929d7b62d44d0d1, type: 3}
+  - {fileID: 21300000, guid: 5857077e01303954b95eca0194715758, type: 3}
   m_PackedSpriteNamesToIndex:
   - timer
   - heart
+  - guide3
+  - guide
   - UIBG
+  - guide2
+  - loading 1
   m_RenderDataMap: {}
   m_Tag: UIAtlas
   m_IsVariant: 0
