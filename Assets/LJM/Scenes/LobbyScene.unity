@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 306859447}
-  m_IndirectSpecularColor: {r: 0.3523782, g: 0.7241868, b: 0.9583921, a: 1}
+  m_IndirectSpecularColor: {r: 0.35237232, g: 0.72443175, b: 0.9583093, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1565,6 +1565,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 333205075}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &365027483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 867883491766882840, guid: 628bdf88b6c0a3e46803632b2fca7224,
+    type: 3}
+  m_PrefabInstance: {fileID: 867883493165280277}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &374836381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2258,6 +2264,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: BossStageScene
   PortalAudio: {fileID: 8300000, guid: 24418ecb67c97c248bdce8c371b2e70f, type: 3}
+  portal: {fileID: 1906231393}
+  stageNum: 2
+  isOn: 0
 --- !u!1001 &563767597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2443,6 +2452,21 @@ PrefabInstance:
         type: 3}
       propertyPath: HP
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 32157855518065273, guid: c6254607a1b73bd41bcbcbd73c9afa5d,
+        type: 3}
+      propertyPath: stageName.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 32157855518065273, guid: c6254607a1b73bd41bcbcbd73c9afa5d,
+        type: 3}
+      propertyPath: stageName.Array.data[1]
+      value: "\uB3C4\uC2DC"
+      objectReference: {fileID: 0}
+    - target: {fileID: 32157855518065273, guid: c6254607a1b73bd41bcbcbd73c9afa5d,
+        type: 3}
+      propertyPath: stageName.Array.data[2]
+      value: Night
       objectReference: {fileID: 0}
     - target: {fileID: 32157855824418344, guid: c6254607a1b73bd41bcbcbd73c9afa5d,
         type: 3}
@@ -4293,6 +4317,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1240834457}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1265874919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 867883491766882840, guid: 628bdf88b6c0a3e46803632b2fca7224,
+    type: 3}
+  m_PrefabInstance: {fileID: 1711111094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1319280117
 GameObject:
   m_ObjectHideFlags: 0
@@ -5279,6 +5309,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: Running1
   PortalAudio: {fileID: 8300000, guid: 24418ecb67c97c248bdce8c371b2e70f, type: 3}
+  portal: {fileID: 365027483}
+  stageNum: 1
+  isOn: 0
 --- !u!114 &1639278896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6001,6 +6034,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.10663064, y: 1.1955217, z: 0.022448827}
   m_Center: {x: -0.00008611811, y: 0.5977609, z: -0.00000005630688}
+--- !u!1 &1906231393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3360587891592593308, guid: ad2ed2ccaa7d3e74090f5e103a97b4d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3361290653905371507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1908188434
 GameObject:
   m_ObjectHideFlags: 0
@@ -6062,6 +6101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: metros
   PortalAudio: {fileID: 8300000, guid: 24418ecb67c97c248bdce8c371b2e70f, type: 3}
+  portal: {fileID: 1265874919}
+  stageNum: 0
+  isOn: 0
 --- !u!114 &1908188438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7806,6 +7848,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360587891592593308, guid: ad2ed2ccaa7d3e74090f5e103a97b4d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3361376103796038732, guid: ad2ed2ccaa7d3e74090f5e103a97b4d0,
         type: 3}
