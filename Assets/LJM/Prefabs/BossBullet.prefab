@@ -1055,6 +1055,7 @@ MonoBehaviour:
   Target: {fileID: 7226908879049163144, guid: f5d5065a05b501f4fa0b4d9e5ef3f6b5, type: 3}
   Effect: {fileID: 196935102817867285, guid: 13d7acc5584af78458e6ef48ec572cd4, type: 3}
   rb: {fileID: 0}
+  audio: {fileID: 8300000, guid: 72838b20b978e424e845ec4d673449e0, type: 3}
 --- !u!1 &8137744949204157649
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,11 @@ public class cshBoss : cshMonster
     public BoxCollider meleeArea1;
     public BoxCollider meleeArea2;
 
+    public AudioClip atk1;
+    public AudioClip atk2;
+    public AudioClip atk3;
+    AudioSource audioSource;
+
     Vector3 lookVec;
     Vector3 tauntVec;
     bool isLook;
@@ -26,6 +31,8 @@ public class cshBoss : cshMonster
         mat = GetComponentInChildren<SkinnedMeshRenderer>().material;
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
+        this.audioSource = GetComponent<AudioSource>();
 
         nav.isStopped = true;
         StartCoroutine(Think());
@@ -94,6 +101,8 @@ public class cshBoss : cshMonster
 
     IEnumerator Atk01() {
         animator.SetTrigger("doAtk01");
+        audioSource.clip = atk1;
+        audioSource.Play();
         meleeArea2.enabled = true;
         yield return new WaitForSeconds(0.7f);
         meleeArea2.enabled = false;
@@ -106,6 +115,8 @@ public class cshBoss : cshMonster
     {
         animator.SetTrigger("doAtk02");
         yield return new WaitForSeconds(0.3f);
+        audioSource.clip = atk2;
+        audioSource.Play();
         meleeArea1.enabled = true;
         yield return new WaitForSeconds(0.45f);
         meleeArea1.enabled = false;
@@ -121,18 +132,22 @@ public class cshBoss : cshMonster
     IEnumerator Taunt()
     {
         animator.SetTrigger("doTaunt");
+        audioSource.clip = atk2;
         yield return new WaitForSeconds(0.75f);
         GameObject dragon01 = Instantiate(dragon, firepos.position, firepos.rotation);
+        audioSource.Play();
         cshBossBullet bossBullet01 = dragon01.GetComponent<cshBossBullet>();
         bossBullet01.Target = target;
 
         yield return new WaitForSeconds(1f);
         GameObject dragon02 = Instantiate(dragon, firepos.position, firepos.rotation);
+        audioSource.Play();
         cshBossBullet bossBullet02 = dragon02.GetComponent<cshBossBullet>();
         bossBullet02.Target = target;
 
         yield return new WaitForSeconds(1f);
         GameObject dragon03 = Instantiate(dragon, firepos.position, firepos.rotation);
+        audioSource.Play();
         cshBossBullet bossBullet03 = dragon03.GetComponent<cshBossBullet>();
         bossBullet03.Target = target;
 

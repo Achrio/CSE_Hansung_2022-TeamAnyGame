@@ -10,6 +10,7 @@ public class cshBossBullet : MonoBehaviour
     NavMeshAgent nav;
     public Rigidbody rb;
 
+
     private void Awake()
     {
         nav = GetComponent<NavMeshAgent>();
