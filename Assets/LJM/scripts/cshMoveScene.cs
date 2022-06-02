@@ -6,6 +6,15 @@ using UnityEngine.SceneManagement;
 public class cshMoveScene : MonoBehaviour
 {
     public string SceneName;
+    public AudioClip PortalAudio;
+    AudioSource audioSource;
+
+    private void Awake()
+    {
+        this.audioSource = GetComponent<AudioSource>();
+        audioSource.clip = PortalAudio;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +31,7 @@ public class cshMoveScene : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            audioSource.Play();
             SceneManager.LoadScene(SceneName);
         }
     }
@@ -30,6 +40,7 @@ public class cshMoveScene : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            audioSource.Play();
             SceneLoadingManager.LoadScene(SceneName);
         }
     }
@@ -38,6 +49,7 @@ public class cshMoveScene : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            audioSource.Play();
             SceneLoadingManager.LoadScene(SceneName);
         }
     }
